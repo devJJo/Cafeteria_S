@@ -1,4 +1,4 @@
-package com.devjjo.cafeteria.serviceimpl;
+package com.devjjo.cafeteria.service;
 
 import java.util.HashMap;
 import java.util.List;

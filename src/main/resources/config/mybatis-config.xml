@@ -3,7 +3,7 @@
 
 <configuration>
 	<mappers>
-		<mapper resource="com/devjjo/cafeteria/sqlMap/sqlMap.xml" />
+		<mapper resource="mapper/sqlMap.xml" />
 	</mappers>
 </configuration>
 
