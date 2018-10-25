@@ -15,7 +15,6 @@
 		
 	<!-- properties -->
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <!-- <property name="locations" value="classpath:/jdbc.properties" /> -->
         <property name="locations" value=" classpath:/properties/jdbc.properties" />
         <property name="fileEncoding" value="UTF-8" />
     </bean>
@@ -33,19 +32,12 @@
     	<property name="dataSource" ref="dataSource" /> 
      	<property name="configLocation" value="classpath:/config/mybatis-config.xml"/>
     </bean> 
-
- 
-
-	<bean id="myappService" class="com.devjjo.cafeteria.service.MyappServiceImpl">
-		<property name="myappDao" ref="myappDao"/>
-	</bean>
-
-	<bean id="myappDao" class="com.devjjo.cafeteria.dao.MyappDaoImpl">
-		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
-	</bean>
 	
-	<context:component-scan base-package="com.devjjo.cafeteria">
-	</context:component-scan>
+	<context:component-scan base-package="com.devjjo.cafeteria.service"/> 
+	<context:component-scan base-package="com.devjjo.cafeteria.dao"/>
 	
+	<bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSession" destroy-method="clearCache">
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
 		
 </beans>

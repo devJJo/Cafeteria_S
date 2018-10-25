@@ -1,4 +1,4 @@
-package com.devjjo.cafeteria;
+package com.devjjo.cafeteria.controller;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
