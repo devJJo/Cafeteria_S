@@ -8,4 +8,5 @@ public class RestURIConstants {
 	public static final String DELETE_USER = "/rest/user/delete/{id}";
 	public static final String UPDATE_USER = "/rest/user/update";
 	
+	public static final String TEST = "/rest/test";
 }

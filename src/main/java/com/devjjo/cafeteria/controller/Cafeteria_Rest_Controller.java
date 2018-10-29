@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.devjjo.cafeteria.constants.RestURIConstants;
+import com.devjjo.cafeteria.model.Cafe;
 import com.devjjo.cafeteria.model.User;
 import com.devjjo.cafeteria.service.Cafeteria_Rest_Service;
 
@@ -118,6 +119,18 @@ public class Cafeteria_Rest_Controller {
 		param.put("P_USER_ID", userId);
 		int resultCount = cafeteria_rest_service.delete_user(param);
 		return resultCount;
+	}
+	
+	/**
+	 * 테스트 URI
+	 * 등록된 모든 카페정보
+	 */
+	@RequestMapping(value = RestURIConstants.TEST, method = RequestMethod.GET)
+	public @ResponseBody List<Cafe> get_all_cafe() {
+		logger.info("##### Get All Cafe");
+		
+		List<Cafe> cafes = cafeteria_rest_service.selectcafes();
+		return cafes;
 	}
 	
 }

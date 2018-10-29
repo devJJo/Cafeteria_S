@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.devjjo.cafeteria.dao.Cafeteria_Rest_Dao;
+import com.devjjo.cafeteria.model.Cafe;
 import com.devjjo.cafeteria.model.User;
 import com.devjjo.cafeteria.service.Cafeteria_Rest_Service;;
 
@@ -42,6 +43,12 @@ public class Cafeteria_Rest_ServiceImpl implements Cafeteria_Rest_Service {
 	public int delete_user(Map<String, Object> userId) {
 		// TODO Auto-generated method stub
 		return cafeteria_rest_dao.delete_user(userId);
+	}
+
+	@Override
+	public List<Cafe> selectcafes() {
+		// TODO Auto-generated method stub
+		return cafeteria_rest_dao.selectcafes();
 	}
 }
 

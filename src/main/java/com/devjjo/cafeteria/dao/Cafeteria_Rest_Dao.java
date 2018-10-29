@@ -2,6 +2,7 @@ package com.devjjo.cafeteria.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.devjjo.cafeteria.model.Cafe;
 import com.devjjo.cafeteria.model.User;
 
 public interface Cafeteria_Rest_Dao {
@@ -15,6 +16,8 @@ public interface Cafeteria_Rest_Dao {
 	public int updateUser(User user);
 
 	public int delete_user(Map<String, Object> userId);
+
+	public List<Cafe> selectcafes();
 
 }
 

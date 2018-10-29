@@ -28,4 +28,12 @@
 		FROM "USER" 
 		WHERE "USER_ID" = #{P_USER_ID}
 	</select>
+	
+	<select id="selectcafes" resultType="java.util.HashMap">
+		SELECT * 
+		FROM "CAFE" AS "CA" LEFT JOIN "MENU" AS "ME"
+		ON "CA"."CAFE_ID" = "ME"."CAFE_ID"
+		ORDER BY "CA"."CAFE_ID", "ME"."MENU_DATE", "ME"."MENU_DIV" DESC
+	</select>
+	
 </mapper> 

@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.devjjo.cafeteria.dao.Cafeteria_Rest_Dao;
+import com.devjjo.cafeteria.model.Cafe;
 import com.devjjo.cafeteria.model.User;;
 
 @Repository
@@ -46,6 +47,16 @@ public class Cafeteria_Rest_DaoImpl implements Cafeteria_Rest_Dao{
 	public int delete_user(Map<String, Object> param) {
 		// TODO Auto-generated method stub
 		return session.delete("CafeteriaSqlMap.delete_user", param);
+	}
+
+	@Override
+	public List<Cafe> selectcafes() {
+		// TODO Auto-generated method stub
+
+		List<Cafe> CafeList = new ArrayList<Cafe>();
+		CafeList = session.selectList("CafeteriaSqlMap.selectcafes");
+		return CafeList;
+		
 	}
 
 
