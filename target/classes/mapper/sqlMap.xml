@@ -31,9 +31,12 @@
 	
 	<select id="selectcafes" resultType="java.util.HashMap">
 		SELECT * 
-		FROM "CAFE" AS "CA" LEFT JOIN "MENU" AS "ME"
-		ON "CA"."CAFE_ID" = "ME"."CAFE_ID"
-		ORDER BY "CA"."CAFE_ID", "ME"."MENU_DATE", "ME"."MENU_DIV" DESC
+		FROM "CAFE"
+	</select>
+	
+	<select id="selectmenus" resultType="java.util.HashMap">
+		SELECT * 
+		FROM "MENU"
 	</select>
 	
 </mapper> 
