@@ -1,7 +1,6 @@
 package com.devjjo.cafeteria.controller;
 
 import java.text.DateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -34,58 +33,6 @@ public class Cafeteria_Rest_Controller {
 	@Autowired
 	private Cafeteria_Rest_Service cafeteria_rest_service;
 
-	Map<String, User> userData = new HashMap<String, User>();
-	/*
-	//Map to store employees, ideally we should use database
-	Map<Integer, Employee> empData = new HashMap<Integer, Employee>();
-	
-	
-	@RequestMapping(value = EmpRestURIConstants.DUMMY_EMP, method = RequestMethod.GET)
-	public @ResponseBody Employee getDummyEmployee() {
-		logger.info("Start getDummyEmployee");
-		Employee emp = new Employee();
-		emp.setId(9999);
-		emp.setName("Dummy");
-		//emp.setCreatedDate(new Date());
-		empData.put(9999, emp);
-		return emp;
-	}
-	
-	@RequestMapping(value = EmpRestURIConstants.GET_EMP, method = RequestMethod.GET)
-	public @ResponseBody Employee getEmployee(@PathVariable("id") int empId) {
-		logger.info("Start getEmployee. ID="+empId);
-		
-		return empData.get(empId);
-	}
-	
-	@RequestMapping(value = EmpRestURIConstants.GET_ALL_EMP, method = RequestMethod.GET)
-	public @ResponseBody List<Employee> getAllEmployees() {
-		logger.info("Start getAllEmployees.");
-		List<Employee> emps = new ArrayList<Employee>();
-		Set<Integer> empIdKeys = empData.keySet();
-		for(Integer i : empIdKeys){
-			emps.add(empData.get(i));
-		}
-		return emps;
-	}
-	
-	@RequestMapping(value = EmpRestURIConstants.CREATE_EMP, method = RequestMethod.POST)
-	public @ResponseBody Employee createEmployee(@RequestBody Employee emp) {
-		logger.info("Start createEmployee.");
-		//emp.setCreatedDate(new Date());
-		empData.put(emp.getId(), emp);
-		return emp;
-	}
-	
-	@RequestMapping(value = EmpRestURIConstants.DELETE_EMP, method = RequestMethod.DELETE)
-	public @ResponseBody Employee deleteEmployee(@PathVariable("id") int empId) {
-		logger.info("Start deleteEmployee.");
-		Employee emp = empData.get(empId);
-		empData.remove(empId);
-		return emp;
-	}
-	*/
-	
 	/**
 	 * 메인 페이지 연결 
 	 */
@@ -117,7 +64,7 @@ public class Cafeteria_Rest_Controller {
 	 * 특정 유저정보 가져옴
 	 */
 	@RequestMapping(value = RestURIConstants.GET_USER, method = RequestMethod.GET)
-	public @ResponseBody User get_user(@PathVariable("id") String userId, @PathVariable("id2") String userId2) {
+	public @ResponseBody User get_user(@PathVariable("id") String userId) {
 		logger.info("##### Get User");
 		Map<String, Object> param = new HashMap<String, Object>();
 		User user = new User();
@@ -148,22 +95,29 @@ public class Cafeteria_Rest_Controller {
 	 * 테스트 URI
 	 * 특정 유저정보 변경
 	 */
-	@RequestMapping(value = RestURIConstants.UPDATE_USER, method = RequestMethod.GET)
-	public @ResponseBody Map<String, Object> update_user() {
+	@RequestMapping(value = RestURIConstants.UPDATE_USER, method = RequestMethod.POST)
+	public @ResponseBody int update_user(@RequestBody User user) {
 		logger.info("##### Update User");
-
-		return null;
+		logger.info("##### " + user.getUser_Id());
+		logger.info("##### " + user.getRemark());
+		logger.info("##### " + user.getUser_Mail());
+		logger.info("##### " + user.getUser_Nm());
+		logger.info("##### " + user.getUser_Tel());
+		int resultCount = cafeteria_rest_service.updateUser(user);
+		return resultCount;
 	}
 	
 	/**
 	 * 테스트 URI
 	 * 특정 유저정보 삭제
 	 */
-	@RequestMapping(value = RestURIConstants.DELETE_USER, method = RequestMethod.GET)
-	public @ResponseBody Map<String, Object> delete_user() {
+	@RequestMapping(value = RestURIConstants.DELETE_USER, method = RequestMethod.DELETE)
+	public @ResponseBody int delete_user(@PathVariable("id") String userId) {	
 		logger.info("Delete User");
-		
-		return null;
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("P_USER_ID", userId);
+		int resultCount = cafeteria_rest_service.delete_user(param);
+		return resultCount;
 	}
 	
 }

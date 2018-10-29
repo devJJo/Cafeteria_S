@@ -1,6 +1,5 @@
 package com.devjjo.cafeteria.dao;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -35,6 +34,18 @@ public class Cafeteria_Rest_DaoImpl implements Cafeteria_Rest_Dao{
 	@Override
 	public int insertUser(User user) {
 		return session.insert("CafeteriaSqlMap.insertUser", user);
+	}
+
+	@Override
+	public int updateUser(User user) {
+		// TODO Auto-generated method stub
+		return session.update("CafeteriaSqlMap.updateUser", user);
+	}
+
+	@Override
+	public int delete_user(Map<String, Object> param) {
+		// TODO Auto-generated method stub
+		return session.delete("CafeteriaSqlMap.delete_user", param);
 	}
 
 

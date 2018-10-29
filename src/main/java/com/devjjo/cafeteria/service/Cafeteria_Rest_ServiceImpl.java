@@ -1,11 +1,8 @@
 package com.devjjo.cafeteria.service;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.inject.Inject;
-
 import org.springframework.stereotype.Service;
 
 import com.devjjo.cafeteria.dao.Cafeteria_Rest_Dao;
@@ -33,6 +30,18 @@ public class Cafeteria_Rest_ServiceImpl implements Cafeteria_Rest_Service {
 	public int insertUser(User user) {
 		// TODO Auto-generated method stub
 		return cafeteria_rest_dao.insertUser(user);
+	}
+
+	@Override
+	public int updateUser(User user) {
+		// TODO Auto-generated method stub
+		return cafeteria_rest_dao.updateUser(user);
+	}
+
+	@Override
+	public int delete_user(Map<String, Object> userId) {
+		// TODO Auto-generated method stub
+		return cafeteria_rest_dao.delete_user(userId);
 	}
 }
 

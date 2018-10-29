@@ -15,6 +15,17 @@
 	
 	<insert id="insertUser" parameterType="com.devjjo.cafeteria.model.User">
 		INSERT INTO "USER" VALUES(#{user_Id}, #{user_Nm}, #{user_Mail}, #{user_Tel}, #{Remark}, LOCALTIMESTAMP,LOCALTIMESTAMP);
-			
 	</insert>
+	
+	<update id="updateUser" parameterType="com.devjjo.cafeteria.model.User">
+		UPDATE "USER" 
+		SET "USER_NM" = #{user_Nm}, "USER_MAIL" = #{user_Mail}, "USER_TEL"=#{user_Tel}, "REMARK" = #{Remark}, "UPD_USER_DTM" = LOCALTIMESTAMP
+		WHERE "USER_ID" = #{user_Id}
+	</update>
+	
+	<select id="delete_user" parameterType="java.util.HashMap">
+		DELETE 
+		FROM "USER" 
+		WHERE "USER_ID" = #{P_USER_ID}
+	</select>
 </mapper> 
