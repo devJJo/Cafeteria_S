@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Cafe {
 	
-	private Menu[] menu;
+
 	private String cafe_Id;
 	private String cafe_Nm;
 	private String cafe_img_Nm;
@@ -22,14 +22,9 @@ public class Cafe {
 	private double build_Y;
 	private double build_Score;
 	private String use_YN;
-	
+	private Menu menu_L;
+	private Menu menu_D;
 
-	public Menu[] getMenu() {
-		return menu;
-	}
-	public void setMenu(Menu[] menu) {
-		this.menu = menu;
-	}
 	public String getCafe_Id() {
 		return cafe_Id;
 	}
@@ -131,6 +126,18 @@ public class Cafe {
 	}
 	public void setUse_YN(String use_YN) {
 		this.use_YN = use_YN;
+	}
+	public Menu getMenu_L() {
+		return menu_L;
+	}
+	public void setMenu_L(Menu menu_L) {
+		this.menu_L = menu_L;
+	}
+	public Menu getMenu_D() {
+		return menu_D;
+	}
+	public void setMenu_D(Menu menu_D) {
+		this.menu_D = menu_D;
 	}
 
 	

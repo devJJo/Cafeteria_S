@@ -126,14 +126,12 @@ public class Cafeteria_Rest_Controller {
 	 * 등록된 모든 카페정보
 	 */
 	@RequestMapping(value = RestURIConstants.TEST, method = RequestMethod.GET)
-	public @ResponseBody Cafe[] get_all_cafe() {
+	public @ResponseBody List<Cafe> get_all_cafe() {
 		logger.info("##### Get All Cafe");
-		Cafe[] cafelist = null;
 		
 		List<Cafe> cafes = cafeteria_rest_service.selectcafes();
-		cafelist[0] = cafes;
-		
-		return cafelist;
+
+		return cafes;
 	}
 	
 }

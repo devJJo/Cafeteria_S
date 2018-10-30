@@ -1,5 +1,6 @@
 package com.devjjo.cafeteria.dao;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -56,24 +57,24 @@ public class Cafeteria_Rest_DaoImpl implements Cafeteria_Rest_Dao{
 	@Override
 	public List<Cafe> selectcafes() {
 		// TODO Auto-generated method stub
+		List<Cafe> lists = new ArrayList<Cafe>();
+		lists = session.selectList("CafeteriaSqlMap.selectcafes");
 
-		List<Cafe> CafeList = new ArrayList<Cafe>();
-		CafeList = session.selectList("CafeteriaSqlMap.selectcafes");
-		logger.info(CafeList.toString());
-
-		
-		
-		logger.info(CafeList.get(1).getCafe_Id());
-		/*
 		List<Menu> menu = new ArrayList<Menu>();
 		menu = session.selectList("CafeteriaSqlMap.selectmenus");
-*/
-		
-		return CafeList;
-		
+
+		for(int i=0; i<lists.size(); i++) {
+			for(int j=0; j<menu.size(); j++) {
+				if(lists.get(i).getCafe_Id().equals(menu.get(j).getCafe_Id())) {
+					if("D".equals(menu.get(j).getMenu_Div())) {
+						lists.get(i).setMenu_D(menu.get(j));
+					}else if("L".equals(menu.get(j).getMenu_Div())) {
+						lists.get(i).setMenu_L(menu.get(j));
+					}
+				}
+			}	
+		}
+		return lists;
 	}
-
-
-
 }
 

@@ -29,14 +29,15 @@
 		WHERE "USER_ID" = #{P_USER_ID}
 	</select>
 	
-	<select id="selectcafes" resultType="java.util.HashMap">
+	<select id="selectcafes" resultType="com.devjjo.cafeteria.model.Cafe">
 		SELECT * 
-		FROM "CAFE"
+		FROM "CAFE" 
 	</select>
 	
-	<select id="selectmenus" resultType="java.util.HashMap">
+	<select id="selectmenus" resultType="com.devjjo.cafeteria.model.Menu">
 		SELECT * 
 		FROM "MENU"
+		WHERE "MENU_DATE" = '20181023'
 	</select>
 	
 </mapper> 
