@@ -31,13 +31,13 @@
 	
 	<select id="selectcafes" resultType="com.devjjo.cafeteria.model.Cafe">
 		SELECT * 
-		FROM "CAFE" 
+		FROM PUBLIC.CAFE 
 	</select>
 	
 	<select id="selectmenus" resultType="com.devjjo.cafeteria.model.Menu">
 		SELECT * 
-		FROM "MENU"
-		WHERE "MENU_DATE" = '20181023'
+		FROM PUBLIC.MENU
+		WHERE MENU_DATE = '20181023'
 	</select>
 	
 </mapper> 
