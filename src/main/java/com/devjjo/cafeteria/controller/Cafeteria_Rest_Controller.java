@@ -48,88 +48,103 @@ public class Cafeteria_Rest_Controller {
 		return "home";
 	}
 	
+	
 	/**
 	 * 테스트 URI
 	 * 등록된 모든 유저정보 가져옴
 	 */
-	@RequestMapping(value = RestURIConstants.GET_ALL_USER, method = RequestMethod.GET)
-	public @ResponseBody List<User> get_all_user() {
-		logger.info("##### Get All User");
-		
-		List<User> users = cafeteria_rest_service.selectUser();
-		return users;
-	}
+	
+//	@RequestMapping(value = RestURIConstants.GET_ALL_USER, method = RequestMethod.GET)
+//	public @ResponseBody List<User> get_all_user() {
+//		logger.info("##### Get All User");
+//		
+//		List<User> users = cafeteria_rest_service.selectUser();
+//		return users;
+//	}
 	
 	/**
 	 * 테스트 URI
 	 * 특정 유저정보 가져옴
 	 */
-	@RequestMapping(value = RestURIConstants.GET_USER, method = RequestMethod.GET)
-	public @ResponseBody User get_user(@PathVariable("id") String userId) {
-		logger.info("##### Get User");
-		Map<String, Object> param = new HashMap<String, Object>();
-		User user = new User();
-		param.put("P_USER_ID", userId);
-		user = cafeteria_rest_service.selectUserOne(param);
-		
-		return user;
-	}
+//	@RequestMapping(value = RestURIConstants.GET_USER, method = RequestMethod.GET)
+//	public @ResponseBody User get_user(@PathVariable("id") String userId) {
+//		logger.info("##### Get User");
+//		Map<String, Object> param = new HashMap<String, Object>();
+//		User user = new User();
+//		param.put("P_USER_ID", userId);
+//		user = cafeteria_rest_service.selectUserOne(param);
+//		
+//		return user;
+//	}
 	
-	/**
-	 * 테스트 URI
-	 * 새로운 유저정보 등록
-	 */
-	@RequestMapping(value = RestURIConstants.CREATE_USER, method = RequestMethod.POST)
-	public @ResponseBody int create_user(@RequestBody User user) {
-		logger.info("##### Create User");
-		logger.info("##### " + user.getUser_Id());
-		logger.info("##### " + user.getRemark());
-		logger.info("##### " + user.getUser_Mail());
-		logger.info("##### " + user.getUser_Nm());
-		logger.info("##### " + user.getUser_Tel());
-		int resultCount = cafeteria_rest_service.insertUser(user);
-		
-		return resultCount;
-	}
+
 	
 	/**
 	 * 테스트 URI
 	 * 특정 유저정보 변경
 	 */
-	@RequestMapping(value = RestURIConstants.UPDATE_USER, method = RequestMethod.POST)
-	public @ResponseBody int update_user(@RequestBody User user) {
-		logger.info("##### Update User");
-		logger.info("##### " + user.getUser_Id());
-		logger.info("##### " + user.getRemark());
-		logger.info("##### " + user.getUser_Mail());
-		logger.info("##### " + user.getUser_Nm());
-		logger.info("##### " + user.getUser_Tel());
-		int resultCount = cafeteria_rest_service.updateUser(user);
+//	@RequestMapping(value = RestURIConstants.UPDATE_USER, method = RequestMethod.POST)
+//	public @ResponseBody int update_user(@RequestBody User user) {
+//		logger.info("##### Update User");
+//
+//		int resultCount = cafeteria_rest_service.updateUser(user);
+//		return resultCount;
+//	}
+
+	
+	/**
+	 * 
+	 * 유저정보 등록
+	 */
+	@RequestMapping(value = RestURIConstants.POST_USER, method = RequestMethod.POST)
+	public @ResponseBody int insertUser(@RequestBody User user) {
+		logger.info("##### Create User");
+		int resultCount = cafeteria_rest_service.insertUser(user);
 		return resultCount;
 	}
 	
 	/**
-	 * 테스트 URI
-	 * 특정 유저정보 삭제
+	 * 
+	 * 유저정보 조회
+	 */
+	@RequestMapping(value = RestURIConstants.GET_USER, method = RequestMethod.GET)
+	public @ResponseBody User selectUserOne(@PathVariable("user_id") String userId) {
+		logger.info("##### Get User");
+		logger.info(userId);
+		Map<String, Object> param = new HashMap<String, Object>();
+		User user = new User();
+		param.put("P_USER_ID", userId);
+		user = cafeteria_rest_service.selectUserOne(param);
+		return user;
+	}
+
+	
+	
+	/**
+	 * 
+	 * 유저정보 삭제
 	 */
 	@RequestMapping(value = RestURIConstants.DELETE_USER, method = RequestMethod.DELETE)
-	public @ResponseBody int delete_user(@PathVariable("id") String userId) {	
+	public @ResponseBody int deleteUser(@PathVariable("user_id") String userId) {
 		logger.info("Delete User");
 		Map<String, Object> param = new HashMap<String, Object>();
 		param.put("P_USER_ID", userId);
-		int resultCount = cafeteria_rest_service.delete_user(param);
+		int resultCount = cafeteria_rest_service.deleteUser(param);
 		return resultCount;
 	}
 	
+	
 	/**
-	 * 테스트 URI
-	 * 등록된 모든 카페정보
+	 * 
+	 * 등록된 모든 카페정보 + 당일 점심/저녁
 	 */
-	@RequestMapping(value = RestURIConstants.TEST, method = RequestMethod.GET)
-	public @ResponseBody List<Cafe> get_all_cafe() {
+	@RequestMapping(value = RestURIConstants.GET_ALL_CAFE, method = RequestMethod.GET)
+	public @ResponseBody List<Cafe> get_all_cafe(@PathVariable("today") String today) {
 		logger.info("##### Get All Cafe");
-		
-		List<Cafe> cafes = cafeteria_rest_service.selectcafes();
+		logger.info(today);
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("P_TODAY", today);
+		List<Cafe> cafes = cafeteria_rest_service.selectcafes(param);
 
 		return cafes;
 	}
