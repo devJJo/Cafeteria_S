@@ -3,20 +3,23 @@ package com.devjjo.cafeteria.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Logger;
 
 import javax.inject.Inject;
+
+
 import org.springframework.stereotype.Service;
 
 import com.devjjo.cafeteria.dao.Cafeteria_Rest_Dao;
 import com.devjjo.cafeteria.model.Cafe;
+import com.devjjo.cafeteria.model.Cafe_Comment;
 import com.devjjo.cafeteria.model.Menu;
 import com.devjjo.cafeteria.model.User;
 import com.devjjo.cafeteria.service.Cafeteria_Rest_Service;
-import org.slf4j.LoggerFactory;
+
 
 @Service
 public class Cafeteria_Rest_ServiceImpl implements Cafeteria_Rest_Service {
+
 
 	@Inject
 	private Cafeteria_Rest_Dao cafeteria_rest_dao;
@@ -49,7 +52,7 @@ public class Cafeteria_Rest_ServiceImpl implements Cafeteria_Rest_Service {
 
 		List<Menu> menu = new ArrayList<Menu>();
 		menu = cafeteria_rest_dao.selectmenus(param);
-		
+
 		for(int i=0; i<lists.size(); i++) {
 			for(int j=0; j<menu.size(); j++) {
 				if(lists.get(i).getCafe_Id().equals(menu.get(j).getCafe_Id())) {
@@ -65,6 +68,24 @@ public class Cafeteria_Rest_ServiceImpl implements Cafeteria_Rest_Service {
 		
 		
 		return lists;
+	}
+
+	@Override
+	public List<Menu> select_date_menu(Map<String, Object> param) {
+		// TODO Auto-generated method stub
+		return cafeteria_rest_dao.select_date_menu(param);
+	}
+
+	@Override
+	public int insertComment(Cafe_Comment comment) {
+		// TODO Auto-generated method stub
+		return cafeteria_rest_dao.insertComment(comment);
+	}
+
+	@Override
+	public List<Cafe_Comment> selectComment(Map<String, Object> param) {
+		// TODO Auto-generated method stub
+		return cafeteria_rest_dao.selectComment(param);
 	}
 }
 

@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.devjjo.cafeteria.constants.RestURIConstants;
 import com.devjjo.cafeteria.model.Cafe;
+import com.devjjo.cafeteria.model.Cafe_Comment;
+import com.devjjo.cafeteria.model.Menu;
 import com.devjjo.cafeteria.model.User;
 import com.devjjo.cafeteria.service.Cafeteria_Rest_Service;
 
@@ -141,7 +143,6 @@ public class Cafeteria_Rest_Controller {
 	@RequestMapping(value = RestURIConstants.GET_ALL_CAFE, method = RequestMethod.GET)
 	public @ResponseBody List<Cafe> get_all_cafe(@PathVariable("today") String today) {
 		logger.info("##### Get All Cafe");
-		logger.info(today);
 		Map<String, Object> param = new HashMap<String, Object>();
 		param.put("P_TODAY", today);
 		List<Cafe> cafes = cafeteria_rest_service.selectcafes(param);
@@ -149,6 +150,49 @@ public class Cafeteria_Rest_Controller {
 		return cafes;
 	}
 	
+	
+	/**
+	 * 
+	 * 기간내 특정 카페 메뉴 조회
+	 */
+	@RequestMapping(value = RestURIConstants.GET_CAFE_MENU, method = RequestMethod.GET)
+	public @ResponseBody List<Menu> select_date_menu(@PathVariable("cafe_id") String cafe_id, @PathVariable("st_date") String st_date
+											 , @PathVariable("end_date") String end_date ) {
+		
+		logger.info("##### Get Date Menu");
+		Map<String, Object> param = new HashMap<String, Object>();
+		
+		param.put("P_CAFE_ID", cafe_id);
+		param.put("P_ST_DATE", st_date);
+		param.put("P_END_DATE", end_date);
+		List<Menu> menu  = cafeteria_rest_service.select_date_menu(param);
+		return menu;
+	}
+			
+	/**
+	 * 
+	 * 코멘트 등록
+	 */
+	@RequestMapping(value = RestURIConstants.POST_COMMENT, method = RequestMethod.POST)
+	public @ResponseBody int insertComment(@RequestBody Cafe_Comment comment) {
+		logger.info("##### Create Comment");
+		int resultCount = cafeteria_rest_service.insertComment(comment);
+		return resultCount;
+	}
+
+	/**
+	 * 
+	 * 카페 상세화면에서의 코멘트 조회
+	 */
+	@RequestMapping(value = RestURIConstants.GET_ALL_COMMENT, method = RequestMethod.GET)
+	public @ResponseBody List<Cafe_Comment> selectComment(@PathVariable("cafe_id") String cafe_id) {
+		logger.info("##### Get Cafe Comment");
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("P_CAFE_ID", cafe_id);
+		List<Cafe_Comment> comments  = cafeteria_rest_service.selectComment(param);
+		return comments;
+	}	
+
 }
 
 

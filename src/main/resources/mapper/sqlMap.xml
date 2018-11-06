@@ -32,6 +32,25 @@
 		WHERE MENU_DATE = #{P_TODAY}
 	</select>
 
+	<select id="select_date_menu" parameterType="java.util.HashMap" resultType="com.devjjo.cafeteria.model.Menu">
+		SELECT * 
+		FROM PUBLIC.MENU
+		WHERE CAFE_ID = #{P_CAFE_ID} AND MENU_DATE BETWEEN #{P_ST_DATE} AND #{P_END_DATE}
+	</select>
+
+	<insert id="insertComment" parameterType="com.devjjo.cafeteria.model.Cafe_Comment">
+		INSERT INTO PUBLIC.CAFE_COMMENT(CAFE_ID, USER_ID, COMMENT, COMMENT_SCORE, INS_USER_DTM, UPD_USER_DTM) 
+			VALUES(#{cafe_Id}, #{user_Id}, #{comment}, TO_NUMBER(#{comment_score}, '9.9'), LOCALTIMESTAMP, LOCALTIMESTAMP);
+	</insert>
+
+	<select id="selectComment" parameterType="java.util.HashMap" resultType="com.devjjo.cafeteria.model.Cafe_Comment">
+		SELECT * 
+		FROM PUBLIC.CAFE_COMMENT
+		WHERE CAFE_ID = #{P_CAFE_ID}
+	</select>
+
+
+
 
 	<!-- 
 	<update id="updateUser" parameterType="com.devjjo.cafeteria.model.User">

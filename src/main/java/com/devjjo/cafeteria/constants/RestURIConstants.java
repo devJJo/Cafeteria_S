@@ -13,14 +13,14 @@ public class RestURIConstants {
 	public static final String POST_USER 			= "/cafe/user/insert";			
 	public static final String GET_USER 			= "/cafe/user/{user_id}";
 	public static final String DELETE_USER 			= "/cafe/user/delete/{user_id}";
-	
 	public static final String GET_ALL_CAFE 		= "/cafe/allcafes/{today}";		
-	
-	public static final String GET_CAFE_MENU 		= "/cafe/cafemenu/{cafe_id}/{st_date}/{end_date}";		
+	public static final String GET_CAFE_MENU 		= "/cafe/cafemenu/{cafe_id}/{st_date}/{end_date}";
 	public static final String POST_COMMENT 		= "/cafe/comment/insert";
+	public static final String GET_ALL_COMMENT		= "/cafe/allcomments/{cafe_id}";
+	
+	
 	public static final String PUT_COMMENT 			= "/cafe/comment/update/{cafe_id}/{user_id}/{score}/{comment}";
 	public static final String DELETE_COMMENT 		= "/cafe/comment/delete/{cafe_id}/{user_id}";
-	public static final String GET_ALL_COMMENT		= "/cafe/allcomments/{cafe_id}";
 	public static final String POST_FAVORITE		= "/cafe/favorite/insert";
 	public static final String GET_ALL_FAVORITE 	= "/cafe/allfavorites/{user_id}";
 	public static final String DELETE_FAVORITE 		= "/cafe/favorite/delete/{cafe_id}/{user_id}";

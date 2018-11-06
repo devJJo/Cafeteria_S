@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import com.devjjo.cafeteria.controller.Cafeteria_Rest_Controller;
 import com.devjjo.cafeteria.dao.Cafeteria_Rest_Dao;
 import com.devjjo.cafeteria.model.Cafe;
+import com.devjjo.cafeteria.model.Cafe_Comment;
 import com.devjjo.cafeteria.model.Menu;
 import com.devjjo.cafeteria.model.User;;
 
@@ -55,7 +56,25 @@ public class Cafeteria_Rest_DaoImpl implements Cafeteria_Rest_Dao{
 	@Override
 	public List<Menu> selectmenus(Map<String, Object> param) {
 		// TODO Auto-generated method stub
-		return session.selectList("CafeteriaSqlMap.selectmenus");
+		return session.selectList("CafeteriaSqlMap.selectmenus", param);
+	}
+
+	@Override
+	public List<Menu> select_date_menu(Map<String, Object> param) {
+		// TODO Auto-generated method stub
+		return session.selectList("CafeteriaSqlMap.select_date_menu", param);
+	}
+
+	@Override
+	public int insertComment(Cafe_Comment comment) {
+		// TODO Auto-generated method stub
+		return session.insert("CafeteriaSqlMap.insertComment", comment);
+	}
+
+	@Override
+	public List<Cafe_Comment> selectComment(Map<String, Object> param) {
+		// TODO Auto-generated method stub
+		return session.selectList("CafeteriaSqlMap.selectComment", param);
 	}
 }
 
