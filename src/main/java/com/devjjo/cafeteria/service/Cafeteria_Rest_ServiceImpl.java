@@ -87,5 +87,17 @@ public class Cafeteria_Rest_ServiceImpl implements Cafeteria_Rest_Service {
 		// TODO Auto-generated method stub
 		return cafeteria_rest_dao.selectComment(param);
 	}
+
+	@Override
+	public int updateComment(Map<String, Object> param) {
+		// TODO Auto-generated method stub
+		return cafeteria_rest_dao.updateComment(param);
+	}
+
+	@Override
+	public int deleteComment(Map<String, Object> param) {
+		// TODO Auto-generated method stub
+		return cafeteria_rest_dao.deleteComment(param);
+	}
 }
 

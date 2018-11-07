@@ -15,11 +15,11 @@
 		WHERE USER_ID = #{P_USER_ID}
 	</select>
 
-	<select id="deleteUser" parameterType="java.util.HashMap">
+	<delete id="deleteUser" parameterType="java.util.HashMap">
 		DELETE 
 		FROM PUBLIC.USER
 		WHERE USER_ID = #{P_USER_ID}
-	</select>
+	</delete>
 
 	<select id="selectcafes" resultType="com.devjjo.cafeteria.model.Cafe">
 		SELECT * 
@@ -49,9 +49,20 @@
 		WHERE CAFE_ID = #{P_CAFE_ID}
 	</select>
 
+	<update id="updateComment" parameterType="java.util.HashMap">
+		UPDATE PUBLIC.CAFE_COMMENT
+		SET COMMENT =#{P_COMMENT}, COMMENT_SCORE = TO_NUMBER(#{P_SCORE}, '9.9'), UPD_USER_DTM = LOCALTIMESTAMP
+		WHERE CAFE_ID = #{P_CAFE_ID} AND USER_ID = #{P_USER_ID} AND SEQ = TO_NUMBER(#{P_SEQ}, '999999')
+
+	</update>
 
 
-
+	<delete id="deleteComment" parameterType="java.util.HashMap">
+		DELETE 
+		FROM PUBLIC.CAFE_COMMENT
+		WHERE CAFE_ID = #{P_CAFE_ID} AND USER_ID = #{P_USER_ID} AND SEQ = TO_NUMBER(#{P_SEQ}, '999999')
+	</delete>
+	
 	<!-- 
 	<update id="updateUser" parameterType="com.devjjo.cafeteria.model.User">
 		UPDATE "USER" 

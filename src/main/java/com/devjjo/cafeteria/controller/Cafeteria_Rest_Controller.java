@@ -128,7 +128,7 @@ public class Cafeteria_Rest_Controller {
 	 */
 	@RequestMapping(value = RestURIConstants.DELETE_USER, method = RequestMethod.DELETE)
 	public @ResponseBody int deleteUser(@PathVariable("user_id") String userId) {
-		logger.info("Delete User");
+		logger.info("##### Delete User");
 		Map<String, Object> param = new HashMap<String, Object>();
 		param.put("P_USER_ID", userId);
 		int resultCount = cafeteria_rest_service.deleteUser(param);
@@ -192,7 +192,38 @@ public class Cafeteria_Rest_Controller {
 		List<Cafe_Comment> comments  = cafeteria_rest_service.selectComment(param);
 		return comments;
 	}	
+	
+	/**
+	 * 
+	 * 카페 코멘트 수정
+	 */
+	@RequestMapping(value = RestURIConstants.PUT_COMMENT, method = RequestMethod.PUT)
+	public @ResponseBody int updateComment(@PathVariable("cafe_id") String cafe_id, @PathVariable("user_id") String user_id
+			 							, @PathVariable("score") String score, @PathVariable("comment") String comment 
+			 							, @PathVariable("seq") String seq) {
+		logger.info("##### Update Comment");
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("P_CAFE_ID", cafe_id);
+		param.put("P_USER_ID", user_id);
+		param.put("P_SCORE", score);
+		param.put("P_COMMENT", comment);
+		param.put("P_SEQ", seq);
+		int resultCount = cafeteria_rest_service.updateComment(param);
+		return resultCount;
+	}
 
+
+	@RequestMapping(value = RestURIConstants.DELETE_COMMENT, method = RequestMethod.DELETE)
+	public @ResponseBody int deleteComment(@PathVariable("cafe_id") String cafe_id, @PathVariable("user_id") String userId
+										, @PathVariable("seq") String seq) {
+		logger.info("##### Delete Comment");
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("P_CAFE_ID", cafe_id);
+		param.put("P_USER_ID", userId);
+		param.put("P_SEQ", seq);
+		int resultCount = cafeteria_rest_service.deleteComment(param);
+		return resultCount;
+	}
 }
 
 

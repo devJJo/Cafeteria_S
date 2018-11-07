@@ -23,6 +23,10 @@ public interface Cafeteria_Rest_Service {
 	public int insertComment(Cafe_Comment comment);
 
 	public List<Cafe_Comment> selectComment(Map<String, Object> param);
+
+	public int updateComment(Map<String, Object> param);
+
+	public int deleteComment(Map<String, Object> param);
 	
 }
 

@@ -76,5 +76,17 @@ public class Cafeteria_Rest_DaoImpl implements Cafeteria_Rest_Dao{
 		// TODO Auto-generated method stub
 		return session.selectList("CafeteriaSqlMap.selectComment", param);
 	}
+
+	@Override
+	public int updateComment(Map<String, Object> param) {
+		// TODO Auto-generated method stub
+		return session.update("CafeteriaSqlMap.updateComment", param);
+	}
+
+	@Override
+	public int deleteComment(Map<String, Object> param) {
+		// TODO Auto-generated method stub
+		return session.delete("CafeteriaSqlMap.deleteComment", param);
+	}
 }
 
