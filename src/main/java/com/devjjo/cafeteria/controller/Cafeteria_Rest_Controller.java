@@ -21,7 +21,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.devjjo.cafeteria.constants.RestURIConstants;
 import com.devjjo.cafeteria.model.Cafe;
 import com.devjjo.cafeteria.model.Cafe_Comment;
+import com.devjjo.cafeteria.model.Favorite;
 import com.devjjo.cafeteria.model.Menu;
+import com.devjjo.cafeteria.model.Notice;
 import com.devjjo.cafeteria.model.User;
 import com.devjjo.cafeteria.service.Cafeteria_Rest_Service;
 
@@ -212,7 +214,10 @@ public class Cafeteria_Rest_Controller {
 		return resultCount;
 	}
 
-
+	/**
+	 * 
+	 * 등록된 유저의 코멘트 삭제
+	 */
 	@RequestMapping(value = RestURIConstants.DELETE_COMMENT, method = RequestMethod.DELETE)
 	public @ResponseBody int deleteComment(@PathVariable("cafe_id") String cafe_id, @PathVariable("user_id") String userId
 										, @PathVariable("seq") String seq) {
@@ -224,9 +229,6 @@ public class Cafeteria_Rest_Controller {
 		int resultCount = cafeteria_rest_service.deleteComment(param);
 		return resultCount;
 	}
-	
-	
-	public static final String GET_USER_COMMENT 	= "/cafe/user/comment/{user_id}";
 	
 	/**
 	 * 
@@ -243,6 +245,56 @@ public class Cafeteria_Rest_Controller {
 		return cafes;
 	}
 	
+	/**
+	 * 
+	 * 등록된 모든 즐겨찾기 정보
+	 */
+	@RequestMapping(value = RestURIConstants.GET_ALL_FAVORITE, method = RequestMethod.GET)
+	public @ResponseBody List<Favorite> selectAllFavorite(@PathVariable("user_id") String user_id) {
+		logger.info("##### Get All Favorite");
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("P_USER_ID", user_id);
+		List<Favorite> favorites = cafeteria_rest_service.selectAllFavorite(param);
+
+		return favorites;
+	}
+
+	/**
+	 * 
+	 * 등록된 유저의 즐겨찾기 삭제
+	 */
+	@RequestMapping(value = RestURIConstants.DELETE_FAVORITE, method = RequestMethod.DELETE)
+	public @ResponseBody int deleteFavorite(@PathVariable("cafe_id") String cafe_id, @PathVariable("user_id") String userId) {
+		logger.info("##### Delete Favorite");
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("P_CAFE_ID", cafe_id);
+		param.put("P_USER_ID", userId);
+		int resultCount = cafeteria_rest_service.deleteFavorite(param);
+		return resultCount;
+	}
+
+	/**
+	 * 
+	 * 등록된 유저의 즐겨찾기 등록
+	 */
+	@RequestMapping(value = RestURIConstants.POST_FAVORITE, method = RequestMethod.POST)
+	public @ResponseBody int insertFavorite(@RequestBody Favorite favorite) {
+		logger.info("##### Create Favorite");
+		int resultCount = cafeteria_rest_service.insertFavorite(favorite);
+		return resultCount;
+	}	
+	
+	/**
+	 * 
+	 * 등록된 모든 즐겨찾기 정보
+	 */
+	@RequestMapping(value = RestURIConstants.GET_ALL_NOTICE, method = RequestMethod.GET)
+	public @ResponseBody List<Notice> selectAllNotice() {
+		logger.info("##### Get All Notice");
+
+		return cafeteria_rest_service.selectAllNotice();
+	}
+	public static final String GET_ALL_NOTICE 		= "/cafe/allnotices";
 }
 
 

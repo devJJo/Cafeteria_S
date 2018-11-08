@@ -4,7 +4,9 @@ import java.util.Map;
 
 import com.devjjo.cafeteria.model.Cafe;
 import com.devjjo.cafeteria.model.Cafe_Comment;
+import com.devjjo.cafeteria.model.Favorite;
 import com.devjjo.cafeteria.model.Menu;
+import com.devjjo.cafeteria.model.Notice;
 import com.devjjo.cafeteria.model.User;
 
 public interface Cafeteria_Rest_Dao {
@@ -30,6 +32,14 @@ public interface Cafeteria_Rest_Dao {
 	public int deleteComment(Map<String, Object> param);
 
 	public List<Cafe_Comment> selectAllComment(Map<String, Object> param);
+
+	public List<Favorite> selectAllFavorite(Map<String, Object> param);
+
+	public int deleteFavorite(Map<String, Object> param);
+
+	public int insertFavorite(Favorite favorite);
+
+	public List<Notice> selectAllNotice();
 
 }
 

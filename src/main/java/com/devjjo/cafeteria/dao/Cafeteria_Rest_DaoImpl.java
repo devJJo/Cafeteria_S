@@ -14,7 +14,9 @@ import com.devjjo.cafeteria.controller.Cafeteria_Rest_Controller;
 import com.devjjo.cafeteria.dao.Cafeteria_Rest_Dao;
 import com.devjjo.cafeteria.model.Cafe;
 import com.devjjo.cafeteria.model.Cafe_Comment;
+import com.devjjo.cafeteria.model.Favorite;
 import com.devjjo.cafeteria.model.Menu;
+import com.devjjo.cafeteria.model.Notice;
 import com.devjjo.cafeteria.model.User;;
 
 @Repository
@@ -93,6 +95,30 @@ public class Cafeteria_Rest_DaoImpl implements Cafeteria_Rest_Dao{
 	public List<Cafe_Comment> selectAllComment(Map<String, Object> param) {
 		// TODO Auto-generated method stub
 		return session.selectList("CafeteriaSqlMap.selectAllComment", param);
+	}
+
+	@Override
+	public List<Favorite> selectAllFavorite(Map<String, Object> param) {
+		// TODO Auto-generated method stub
+		return session.selectList("CafeteriaSqlMap.selectAllFavorite", param);
+	}
+
+	@Override
+	public int deleteFavorite(Map<String, Object> param) {
+		// TODO Auto-generated method stub
+		return session.delete("CafeteriaSqlMap.deleteFavorite", param);
+	}
+
+	@Override
+	public int insertFavorite(Favorite favorite) {
+		// TODO Auto-generated method stub
+		return session.insert("CafeteriaSqlMap.insertFavorite", favorite);
+	}
+
+	@Override
+	public List<Notice> selectAllNotice() {
+		// TODO Auto-generated method stub
+		return session.selectList("CafeteriaSqlMap.selectAllNotice");
 	}
 }
 

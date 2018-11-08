@@ -63,12 +63,32 @@
 	</delete>
 	
 	
-	<select id="selectAllComment" resultType="com.devjjo.cafeteria.model.Cafe_Comment">
+	<select id="selectAllComment" parameterType="java.util.HashMap" resultType="com.devjjo.cafeteria.model.Cafe_Comment">
 		SELECT * 
 		FROM PUBLIC.CAFE_COMMENT
 		WHERE USER_ID = #{P_USER_ID}
 	</select>
-	
 
+	<select id="selectAllFavorite" parameterType="java.util.HashMap" resultType="com.devjjo.cafeteria.model.Favorite">
+		SELECT * 
+		FROM PUBLIC.FAVORITE
+		WHERE USER_ID = #{P_USER_ID}
+	</select>
+	
+	<delete id="deleteFavorite" parameterType="java.util.HashMap">
+		DELETE 
+		FROM PUBLIC.FAVORITE
+		WHERE USER_ID = #{P_USER_ID} CAFE_ID = #{P_CAFE_ID}
+	</delete>
+	
+	<insert id="insertFavorite" parameterType="com.devjjo.cafeteria.model.Favorite">
+		INSERT INTO PUBLIC.FAVORITE VALUES(#{user_Id}, #{cafe_Id}, #{add_Date});	
+	</insert>
+	
+	<select id="selectAllNotice" parameterType="java.util.HashMap" resultType="com.devjjo.cafeteria.model.Favorite">
+		SELECT * 
+		FROM PUBLIC.NOTICE
+		ORDER BY SEQ DESC
+	</select>
 	
 </mapper> 
