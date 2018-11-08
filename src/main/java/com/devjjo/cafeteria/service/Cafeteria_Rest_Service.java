@@ -27,6 +27,8 @@ public interface Cafeteria_Rest_Service {
 	public int updateComment(Map<String, Object> param);
 
 	public int deleteComment(Map<String, Object> param);
+
+	public List<Cafe_Comment> selectAllComment(Map<String, Object> param);
 	
 }
 

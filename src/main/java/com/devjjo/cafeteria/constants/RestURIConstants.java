@@ -19,8 +19,6 @@ public class RestURIConstants {
 	public static final String GET_ALL_COMMENT		= "/cafe/allcomments/{cafe_id}";
 	public static final String PUT_COMMENT 			= "/cafe/comment/update/{cafe_id}/{user_id}/{seq}/{score}/{comment}";
 	public static final String DELETE_COMMENT 		= "/cafe/comment/delete/{cafe_id}/{user_id}/{seq}";
-	
-	//아래부터 gogo
 	public static final String GET_USER_COMMENT 	= "/cafe/user/comment/{user_id}";
 
 	

@@ -56,21 +56,18 @@
 
 	</update>
 
-
 	<delete id="deleteComment" parameterType="java.util.HashMap">
 		DELETE 
 		FROM PUBLIC.CAFE_COMMENT
 		WHERE CAFE_ID = #{P_CAFE_ID} AND USER_ID = #{P_USER_ID} AND SEQ = TO_NUMBER(#{P_SEQ}, '999999')
 	</delete>
 	
-	<!-- 
-	<update id="updateUser" parameterType="com.devjjo.cafeteria.model.User">
-		UPDATE "USER" 
-		SET "USER_NM" = #{user_Nm}, "USER_MAIL" = #{user_Mail}, "USER_TEL"=#{user_Tel}, "REMARK" = #{Remark}, "UPD_USER_DTM" = LOCALTIMESTAMP
-		WHERE "USER_ID" = #{user_Id}
-	</update>
-	 -->
-
+	
+	<select id="selectAllComment" resultType="com.devjjo.cafeteria.model.Cafe_Comment">
+		SELECT * 
+		FROM PUBLIC.CAFE_COMMENT
+		WHERE USER_ID = #{P_USER_ID}
+	</select>
 	
 
 	

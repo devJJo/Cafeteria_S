@@ -224,6 +224,25 @@ public class Cafeteria_Rest_Controller {
 		int resultCount = cafeteria_rest_service.deleteComment(param);
 		return resultCount;
 	}
+	
+	
+	public static final String GET_USER_COMMENT 	= "/cafe/user/comment/{user_id}";
+	
+	/**
+	 * 
+	 * 등록된 유저의 모든 코멘트 호출
+	 */
+	@RequestMapping(value = RestURIConstants.GET_USER_COMMENT, method = RequestMethod.GET)
+	public @ResponseBody List<Cafe_Comment> selectAllComment(@PathVariable("user_id") String user_id) {
+		logger.info("##### Get All Comment");
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("P_USER_ID", user_id);
+		
+		List<Cafe_Comment> cafes = cafeteria_rest_service.selectAllComment(param);
+
+		return cafes;
+	}
+	
 }
 
 

@@ -99,5 +99,11 @@ public class Cafeteria_Rest_ServiceImpl implements Cafeteria_Rest_Service {
 		// TODO Auto-generated method stub
 		return cafeteria_rest_dao.deleteComment(param);
 	}
+
+	@Override
+	public List<Cafe_Comment> selectAllComment(Map<String, Object> param) {
+		// TODO Auto-generated method stub
+		return cafeteria_rest_dao.selectAllComment(param);
+	}
 }
 

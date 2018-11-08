@@ -29,5 +29,7 @@ public interface Cafeteria_Rest_Dao {
 
 	public int deleteComment(Map<String, Object> param);
 
+	public List<Cafe_Comment> selectAllComment(Map<String, Object> param);
+
 }
 
