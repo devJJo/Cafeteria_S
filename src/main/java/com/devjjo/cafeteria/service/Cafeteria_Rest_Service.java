@@ -39,6 +39,8 @@ public interface Cafeteria_Rest_Service {
 	public int insertFavorite(Favorite favorite);
 
 	public List<Notice> selectAllNotice();
+
+	public List<Cafe> getCafeList();
 	
 }
 

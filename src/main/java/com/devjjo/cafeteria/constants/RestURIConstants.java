@@ -10,23 +10,23 @@ public class RestURIConstants {
 	public static final String UPDATE_USER = "/rest/user/update";
 	*/
 	
-	public static final String POST_USER 			= "/cafe/user/insert";			
-	public static final String GET_USER 			= "/cafe/user/{user_id}";
-	public static final String DELETE_USER 			= "/cafe/user/delete/{user_id}";
-	public static final String GET_ALL_CAFE 		= "/cafe/allcafes/{today}";		
-	public static final String GET_CAFE_MENU 		= "/cafe/cafemenu/{cafe_id}/{st_date}/{end_date}";
-	public static final String POST_COMMENT 		= "/cafe/comment/insert";
-	public static final String GET_ALL_COMMENT		= "/cafe/allcomments/{cafe_id}";
-	public static final String PUT_COMMENT 			= "/cafe/comment/update/{cafe_id}/{user_id}/{seq}/{score}/{comment}";
-	public static final String DELETE_COMMENT 		= "/cafe/comment/delete/{cafe_id}/{user_id}/{seq}";
-	public static final String GET_USER_COMMENT 	= "/cafe/user/comment/{user_id}";
+	public static final String POST_USER 			= "/user/insert";			
+	public static final String GET_USER 			= "/user/{user_id}";
+	public static final String DELETE_USER 			= "/user/delete/{user_id}";
+	public static final String GET_ALL_CAFE 		= "/allcafes/{today}";		
+	public static final String GET_CAFE_MENU 		= "/cafemenu/{cafe_id}/{st_date}/{end_date}";
+	public static final String POST_COMMENT 		= "/comment/insert";
+	public static final String GET_ALL_COMMENT		= "/allcomments/{cafe_id}";
+	public static final String PUT_COMMENT 			= "/comment/update/{cafe_id}/{user_id}/{seq}/{score}/{comment}";
+	public static final String DELETE_COMMENT 		= "/comment/delete/{cafe_id}/{user_id}/{seq}";
+	public static final String GET_USER_COMMENT 	= "/user/comment/{user_id}";
 
 	
-	public static final String GET_ALL_FAVORITE 	= "/cafe/allfavorites/{user_id}";
-	public static final String DELETE_FAVORITE 		= "/cafe/favorite/delete/{cafe_id}/{user_id}";
-	public static final String POST_FAVORITE		= "/cafe/favorite/insert";
+	public static final String GET_ALL_FAVORITE 	= "/allfavorites/{user_id}";
+	public static final String DELETE_FAVORITE 		= "/favorite/delete/{cafe_id}/{user_id}";
+	public static final String POST_FAVORITE		= "/favorite/insert";
 	
-	public static final String GET_ALL_NOTICE 		= "/cafe/allnotices";
+	public static final String GET_ALL_NOTICE 		= "/allnotices";
 	
 	
 	//public static final String PUT_USER_COMMENT 	= "/cafe/user/comment/update/{cafe_id}/{user_id}/{score}/{comment}";

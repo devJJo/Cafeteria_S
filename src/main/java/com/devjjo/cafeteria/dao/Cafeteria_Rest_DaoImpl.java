@@ -120,5 +120,11 @@ public class Cafeteria_Rest_DaoImpl implements Cafeteria_Rest_Dao{
 		// TODO Auto-generated method stub
 		return session.selectList("CafeteriaSqlMap.selectAllNotice");
 	}
+
+	@Override
+	public List<Cafe> getCafeList() {
+		// TODO Auto-generated method stub
+		return session.selectList("CafeteriaSqlMap.getCafeList");
+	}
 }
 

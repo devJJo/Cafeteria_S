@@ -29,7 +29,7 @@
 		<c:forEach var="cafe" items="${cafeList}">
 			<tr>
 				<!-- user객체에 getuserId 부르는건데 줄여서이렇게 쓰는것 -->
-				<td><a href="/getUser.do?userid="${cafe.cafe_Id}"> ${cafe.cafe_Id} </a></td>
+				<td><a href="/getCafemenu.do?cafeid="${cafe.cafe_Id}"> ${cafe.cafe_Id} </a></td>
 				<td>${cafe.build_Addr}</td>
 				<td>${cafe.build_Nm}</td>
 				<td>${cafe.build_Home}</td>

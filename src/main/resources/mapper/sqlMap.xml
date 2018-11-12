@@ -78,7 +78,7 @@
 	<delete id="deleteFavorite" parameterType="java.util.HashMap">
 		DELETE 
 		FROM PUBLIC.FAVORITE
-		WHERE USER_ID = #{P_USER_ID} CAFE_ID = #{P_CAFE_ID}
+		WHERE USER_ID = #{P_USER_ID} AND CAFE_ID = #{P_CAFE_ID}
 	</delete>
 	
 	<insert id="insertFavorite" parameterType="com.devjjo.cafeteria.model.Favorite">
@@ -91,4 +91,10 @@
 		ORDER BY SEQ DESC
 	</select>
 	
+	<select id="getCafeList" parameterType="java.util.HashMap" resultType="com.devjjo.cafeteria.model.Cafe">
+		SELECT * 
+		FROM PUBLIC.CAFE
+		ORDER BY CAFE_ID DESC
+	</select>	
+
 </mapper> 

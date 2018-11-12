@@ -131,5 +131,11 @@ public class Cafeteria_Rest_ServiceImpl implements Cafeteria_Rest_Service {
 		// TODO Auto-generated method stub
 		return cafeteria_rest_dao.selectAllNotice();
 	}
+
+	@Override
+	public List<Cafe> getCafeList() {
+		// TODO Auto-generated method stub
+		return cafeteria_rest_dao.getCafeList();
+	}
 }
 

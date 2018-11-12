@@ -139,6 +139,15 @@ public class Cafe {
 	public void setMenu_D(Menu menu_D) {
 		this.menu_D = menu_D;
 	}
+	@Override
+	public String toString() {
+		return "Cafe [cafe_Id=" + cafe_Id + ", cafe_Nm=" + cafe_Nm + ", cafe_img_Nm=" + cafe_img_Nm + ", cafe_img_Dir="
+				+ cafe_img_Dir + ", price=" + price + ", lunch_YN=" + lunch_YN + ", dinner_YN=" + dinner_YN
+				+ ", oper_Time=" + oper_Time + ", build_Addr=" + build_Addr + ", build_Nm=" + build_Nm + ", build_Tel="
+				+ build_Tel + ", build_Home=" + build_Home + ", build_Key=" + build_Key + ", build_X=" + build_X
+				+ ", build_Y=" + build_Y + ", build_Score=" + build_Score + ", use_YN=" + use_YN + ", menu_L=" + menu_L
+				+ ", menu_D=" + menu_D + "]";
+	}
 
 	
 	

@@ -41,5 +41,7 @@ public interface Cafeteria_Rest_Dao {
 
 	public List<Notice> selectAllNotice();
 
+	public List<Cafe> getCafeList();
+
 }
 

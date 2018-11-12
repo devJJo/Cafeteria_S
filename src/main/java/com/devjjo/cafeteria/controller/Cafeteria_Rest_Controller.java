@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.devjjo.cafeteria.constants.RestURIConstants;
 import com.devjjo.cafeteria.model.Cafe;
@@ -41,17 +43,33 @@ public class Cafeteria_Rest_Controller {
 	/**
 	 * 메인 페이지 연결 
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/getCafeList.do", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! the client locale is "+ locale.toString());
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		String formattedDate = dateFormat.format(date);
-		model.addAttribute("serverTime", formattedDate );
-
-		return "home";
+		//Date date = new Date();
+		//DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		//String formattedDate = dateFormat.format(date);
+		
+		//model.addAttribute("serverTime", formattedDate );
+		
+		List<Cafe> cafeList = cafeteria_rest_service.getCafeList();
+		System.out.println(cafeList.toString());
+		model.addAttribute("cafeList", cafeList);
+		
+		return "cafelist";
 	}
 	
+
+//	@RequestMapping(value="/getCafemenu.do" , method=RequestMethod.GET)
+//	public ModelAndView getUser(@RequestParam(name="cafeid") String cafeid) {
+
+		
+//		UserVO user = userService.getUser(id);
+//		//모델에 담으면 자동으로 넘어간다!! 리턴은 페이지!!
+//		model.addAttribute("userList", userList);
+//		
+//		return "userList.jsp";
+//	}
 	
 	/**
 	 * 테스트 URI
