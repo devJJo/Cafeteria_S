@@ -85,7 +85,7 @@
 		INSERT INTO PUBLIC.FAVORITE VALUES(#{user_Id}, #{cafe_Id}, #{add_Date});	
 	</insert>
 	
-	<select id="selectAllNotice" parameterType="java.util.HashMap" resultType="com.devjjo.cafeteria.model.Favorite">
+	<select id="selectAllNotice" parameterType="java.util.HashMap" resultType="com.devjjo.cafeteria.model.Notice">
 		SELECT * 
 		FROM PUBLIC.NOTICE
 		ORDER BY SEQ DESC
@@ -94,7 +94,7 @@
 	<select id="getCafeList" parameterType="java.util.HashMap" resultType="com.devjjo.cafeteria.model.Cafe">
 		SELECT * 
 		FROM PUBLIC.CAFE
-		ORDER BY CAFE_ID DESC
+		ORDER BY CAFE_ID ASC
 	</select>	
 
 </mapper> 

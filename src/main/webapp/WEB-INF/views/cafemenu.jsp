@@ -7,36 +7,44 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Home</title>
+	<title>Menu List</title>
 </head>
-
-
 
 <body>
 	<h1>
 		Gudi Cafeteria
 	</h1>
 
-	<h2>구내식당 리스트</h2>
-	<table>
-		<tr>
-			<th>식당ID</th>
-			<th>건물주소</th>
-			<th>건물명</th>
-			<th>식당명</th>
-			<th>전화번호</th>
-		</tr>
-		<c:forEach var="cafe" items="${cafeList}">
-			<tr>
-				<!-- user객체에 getuserId 부르는건데 줄여서이렇게 쓰는것 -->
-				<td><a href="/getCafemenu.do?cafeid="${cafe.cafe_Id}"> ${cafe.cafe_Id} </a></td>
-				<td>${cafe.build_Addr}</td>
-				<td>${cafe.build_Nm}</td>
-				<td>${cafe.build_Home}</td>
-				<td>${cafe.build_Tel}</td>
-			</tr>
-		</c:forEach>
-	</table>
+	<h2>[${cafeid}] : ${buildname} ${buildhome} </h2>
+
+
+		<div>
+			<form method="post" action="insertUser.do"  >
+				<table  class="table table-bordered table table-hover">
+					<tr>
+						<td>밥</td>
+						<td>:</td>
+						<td><input type="text" name="userId" value="쌀밥"/></td>
+					</tr>
+					<tr>
+						<td>국 </td>
+						<td>:</td>
+						<td><input type="text" name="name" value="된장국"/></td>
+					</tr>
+
+					<tr>
+					<td colspan="2"  class="text-center">
+						<input type="submit" value="등록" /></td>
+					</tr>
+					
+					<tr>					
+						<td colspan="2" class="text-center"><a href="getUserList.do">사용자 목록보기</a></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	
+	
 
 <p></p>
 </body>

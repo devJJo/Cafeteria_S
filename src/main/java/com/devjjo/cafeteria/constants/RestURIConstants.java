@@ -10,14 +10,16 @@ public class RestURIConstants {
 	public static final String UPDATE_USER = "/rest/user/update";
 	*/
 	
-	public static final String POST_USER 			= "/user/insert";			
 	public static final String GET_USER 			= "/user/{user_id}";
+	public static final String POST_USER 			= "/user/insert";			
 	public static final String DELETE_USER 			= "/user/delete/{user_id}";
+	
 	public static final String GET_ALL_CAFE 		= "/allcafes/{today}";		
 	public static final String GET_CAFE_MENU 		= "/cafemenu/{cafe_id}/{st_date}/{end_date}";
-	public static final String POST_COMMENT 		= "/comment/insert";
+	
 	public static final String GET_ALL_COMMENT		= "/allcomments/{cafe_id}";
-	public static final String PUT_COMMENT 			= "/comment/update/{cafe_id}/{user_id}/{seq}/{score}/{comment}";
+	public static final String POST_COMMENT 		= "/comment/insert";
+	public static final String PUT_COMMENT 			= "/comment/update/{cafe_id}/{user_id}/{seq}/{score}/{comment}"; //수정예정...
 	public static final String DELETE_COMMENT 		= "/comment/delete/{cafe_id}/{user_id}/{seq}";
 	public static final String GET_USER_COMMENT 	= "/user/comment/{user_id}";
 

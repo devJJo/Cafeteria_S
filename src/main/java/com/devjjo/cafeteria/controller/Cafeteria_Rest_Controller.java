@@ -60,16 +60,22 @@ public class Cafeteria_Rest_Controller {
 	}
 	
 
-//	@RequestMapping(value="/getCafemenu.do" , method=RequestMethod.GET)
-//	public ModelAndView getUser(@RequestParam(name="cafeid") String cafeid) {
-
+	@RequestMapping(value="/getCafemenu.do" , method=RequestMethod.GET)
+	public String getCafemenu(Model model, @RequestParam(name="cafeid") String cafeid, @RequestParam(name="buildname") String buildname, @RequestParam(name="buildhome") String buildhome) {
 		
-//		UserVO user = userService.getUser(id);
-//		//모델에 담으면 자동으로 넘어간다!! 리턴은 페이지!!
-//		model.addAttribute("userList", userList);
-//		
-//		return "userList.jsp";
-//	}
+		System.out.println(cafeid);
+		System.out.println(buildname);
+		System.out.println(buildhome);
+		
+		//UserVO user = userService.getUser(id);
+		//모델에 담으면 자동으로 넘어간다!! 리턴은 페이지!!
+		//model.addAttribute("userList", userList);
+		model.addAttribute("cafeid", cafeid);
+		model.addAttribute("buildname", buildname);
+		model.addAttribute("buildhome", buildhome);
+		
+		return "cafemenu";
+	}
 	
 	/**
 	 * 테스트 URI
@@ -228,6 +234,13 @@ public class Cafeteria_Rest_Controller {
 		param.put("P_SCORE", score);
 		param.put("P_COMMENT", comment);
 		param.put("P_SEQ", seq);
+		
+		System.out.println(cafe_id);
+		System.out.println(user_id);
+		System.out.println(score);
+		System.out.println(comment);
+		System.out.println(seq);
+
 		int resultCount = cafeteria_rest_service.updateComment(param);
 		return resultCount;
 	}
@@ -312,7 +325,7 @@ public class Cafeteria_Rest_Controller {
 
 		return cafeteria_rest_service.selectAllNotice();
 	}
-	public static final String GET_ALL_NOTICE 		= "/cafe/allnotices";
+	
 }
 
 
