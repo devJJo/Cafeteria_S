@@ -28,7 +28,7 @@
 		</tr>
 		<c:forEach var="cafe" items="${cafeList}">
 			<tr>
-				<td><a href="/cafeteria/getCafemenu.do?cafeid=${cafe.cafe_Id}&buildname=${cafe.build_Nm}&buildhome=${cafe.build_Home}"> ${cafe.cafe_Id} </a></td>
+				<td><a href="/cafeteria/getCafemenu.do?cafeid=${cafe.cafe_Id}&menudate="> ${cafe.cafe_Id} </a></td>
 				<td>${cafe.build_Addr}</td>
 				<td>${cafe.build_Nm}</td>
 				<td>${cafe.build_Home}</td>

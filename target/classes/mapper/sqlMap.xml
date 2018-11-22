@@ -97,4 +97,17 @@
 		ORDER BY CAFE_ID ASC
 	</select>	
 
+	<select id="getMenu" parameterType="java.util.HashMap" resultType="com.devjjo.cafeteria.model.Menu">
+		SELECT * 
+		FROM PUBLIC.MENU
+		WHERE MENU_DATE = #{P_MENU_DATE} AND CAFE_ID = #{P_CAFE_ID} AND MENU_DIV = #{P_MENU_DIV}
+	</select>	
+
+	<select id="getCafeInfo" parameterType="java.util.HashMap" resultType="com.devjjo.cafeteria.model.Cafe">
+		SELECT * 
+		FROM PUBLIC.CAFE
+		WHERE CAFE_ID = #{P_CAFE_ID}
+	</select>
+
+
 </mapper> 

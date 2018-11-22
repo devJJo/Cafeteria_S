@@ -1,6 +1,8 @@
 package com.devjjo.cafeteria.controller;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -58,21 +60,45 @@ public class Cafeteria_Rest_Controller {
 		
 		return "cafelist";
 	}
+
+		//카페 이름 건물이름 넘기지말고 카페아이디로 재쿼리 하기
 	
 
 	@RequestMapping(value="/getCafemenu.do" , method=RequestMethod.GET)
-	public String getCafemenu(Model model, @RequestParam(name="cafeid") String cafeid, @RequestParam(name="buildname") String buildname, @RequestParam(name="buildhome") String buildhome) {
+	public String getCafemenu(Model model
+			, @RequestParam(name="cafeid") String cafeid
+			, @RequestParam(name="menudate") String menudate) {
+
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(new Date());
 		
-		System.out.println(cafeid);
-		System.out.println(buildname);
-		System.out.println(buildhome);
 		
-		//UserVO user = userService.getUser(id);
-		//모델에 담으면 자동으로 넘어간다!! 리턴은 페이지!!
-		//model.addAttribute("userList", userList);
+		//cal.add(Calendar.DATE, 1);
+		DateFormat df = new SimpleDateFormat("yyyyMMdd");
+
+		if("".equals(menudate)) {
+			menudate = df.format(cal.getTime());
+		}
+
+		//테스트 저장
+		//menudate = "20181023";
+		
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("P_CAFE_ID", cafeid);
+		param.put("P_MENU_DATE", menudate);
+		param.put("P_MENU_DIV", "L");
+		Menu menuL = cafeteria_rest_service.getMenu(param);
+
+		param.put("P_MENU_DIV", "D");
+		Menu menuD = cafeteria_rest_service.getMenu(param);
+		
+		Cafe cafe = cafeteria_rest_service.getCafeInfo(param);
+
+		model.addAttribute("menuListL", menuL);
+		model.addAttribute("menuListD", menuD);
+		model.addAttribute("menudate", menudate);
 		model.addAttribute("cafeid", cafeid);
-		model.addAttribute("buildname", buildname);
-		model.addAttribute("buildhome", buildhome);
+		model.addAttribute("cafe", cafe);
 		
 		return "cafemenu";
 	}

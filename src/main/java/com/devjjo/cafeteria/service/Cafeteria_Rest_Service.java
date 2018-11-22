@@ -41,6 +41,10 @@ public interface Cafeteria_Rest_Service {
 	public List<Notice> selectAllNotice();
 
 	public List<Cafe> getCafeList();
+
+	public Menu getMenu(Map<String, Object> param);
+
+	public Cafe getCafeInfo(Map<String, Object> param);
 	
 }
 

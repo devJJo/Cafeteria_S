@@ -43,5 +43,9 @@ public interface Cafeteria_Rest_Dao {
 
 	public List<Cafe> getCafeList();
 
+	public Menu getMenu(Map<String, Object> param);
+
+	public Cafe getCafeInfo(Map<String, Object> param);
+
 }
 

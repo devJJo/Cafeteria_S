@@ -126,5 +126,17 @@ public class Cafeteria_Rest_DaoImpl implements Cafeteria_Rest_Dao{
 		// TODO Auto-generated method stub
 		return session.selectList("CafeteriaSqlMap.getCafeList");
 	}
+
+	@Override
+	public Menu getMenu(Map<String, Object> param) {
+		// TODO Auto-generated method stub
+		return session.selectOne("CafeteriaSqlMap.getMenu", param);
+	}
+
+	@Override
+	public Cafe getCafeInfo(Map<String, Object> param) {
+		// TODO Auto-generated method stub
+		return session.selectOne("CafeteriaSqlMap.getCafeInfo", param);
+	}
 }
 
