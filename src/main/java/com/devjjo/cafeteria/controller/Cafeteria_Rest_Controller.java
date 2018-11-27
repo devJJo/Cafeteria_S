@@ -61,9 +61,9 @@ public class Cafeteria_Rest_Controller {
 		return "cafelist";
 	}
 
-		//카페 이름 건물이름 넘기지말고 카페아이디로 재쿼리 하기
-	
-
+	/**
+	 * 카페메뉴 조회
+	 */
 	@RequestMapping(value="/getCafemenu.do" , method=RequestMethod.GET)
 	public String getCafemenu(Model model
 			, @RequestParam(name="cafeid") String cafeid
@@ -103,49 +103,21 @@ public class Cafeteria_Rest_Controller {
 		return "cafemenu";
 	}
 	
+
 	/**
-	 * 테스트 URI
-	 * 등록된 모든 유저정보 가져옴
+	 * 메뉴등록 
 	 */
-	
-//	@RequestMapping(value = RestURIConstants.GET_ALL_USER, method = RequestMethod.GET)
-//	public @ResponseBody List<User> get_all_user() {
-//		logger.info("##### Get All User");
-//		
-//		List<User> users = cafeteria_rest_service.selectUser();
-//		return users;
-//	}
-	
-	/**
-	 * 테스트 URI
-	 * 특정 유저정보 가져옴
-	 */
-//	@RequestMapping(value = RestURIConstants.GET_USER, method = RequestMethod.GET)
-//	public @ResponseBody User get_user(@PathVariable("id") String userId) {
-//		logger.info("##### Get User");
-//		Map<String, Object> param = new HashMap<String, Object>();
-//		User user = new User();
-//		param.put("P_USER_ID", userId);
-//		user = cafeteria_rest_service.selectUserOne(param);
-//		
-//		return user;
-//	}
+	@RequestMapping(value = "/insertMenu.do", method = RequestMethod.POST)
+	public @ResponseBody int insertMenu(@RequestBody Menu menu) {
+
+		System.out.println("@@@@@   : " + menu.getRice());
+		System.out.println("@@@@@   : " + menu.getSoup());
+		 
+		
+		return 1;
+	}
 	
 
-	
-	/**
-	 * 테스트 URI
-	 * 특정 유저정보 변경
-	 */
-//	@RequestMapping(value = RestURIConstants.UPDATE_USER, method = RequestMethod.POST)
-//	public @ResponseBody int update_user(@RequestBody User user) {
-//		logger.info("##### Update User");
-//
-//		int resultCount = cafeteria_rest_service.updateUser(user);
-//		return resultCount;
-//	}
-
-	
 	/**
 	 * 
 	 * 유저정보 등록

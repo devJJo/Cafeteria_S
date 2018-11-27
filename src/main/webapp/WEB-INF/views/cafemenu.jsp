@@ -40,20 +40,20 @@
 
 	
 		<div>
-			<form method="post" action="insertUser.do"  >
+			<form method="post" action="insertMenu.do"  >
 				<p> 점 심  </p>
 				<table  class="table table-bordered table table-hover">
 					<tr>
 						<td>밥</td>
-						<td><input type="text" name="userId" value=${menuListL.rice}></td>
+						<td><input type="text" name="rice" value=${menuListL.rice}></td>
 					</tr>
 					<tr>
 						<td>국 </td>
-						<td><input type="text" name="name" value=${menuListL.soup}></td>
+						<td><input type="text" name="soup" value=${menuListL.soup}></td>
 					</tr>
 					<tr>
 						<td>반찬1</td>
-						<td><input type="text" name="name" value=${menuListL.side_Dish1}></td>
+						<td><input type="text" name="side_Dish1" value=${menuListL.side_Dish1}></td>
 					</tr>
 					<tr>
 						<td>반찬2</td>
@@ -151,7 +151,12 @@
 				
 				</br>
 				</br>
+				
+				
 				<input type="submit" value="등록" />
+
+				
+				
 				</br>
 				</br>
 				<a href="getCafeList.do">식당 목록보기</a>
