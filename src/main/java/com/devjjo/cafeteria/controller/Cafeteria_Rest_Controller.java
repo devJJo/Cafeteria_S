@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -106,15 +107,66 @@ public class Cafeteria_Rest_Controller {
 
 	/**
 	 * 메뉴등록 
+	 * @return 
 	 */
-	@RequestMapping(value = "/insertMenu.do", method = RequestMethod.POST)
-	public @ResponseBody int insertMenu(@RequestBody Menu menu) {
+	
+	@RequestMapping(value="/insertMenu.do",  method = RequestMethod.POST)
+	public @ResponseBody int insertMenu(@RequestBody Map<String,Object> list) {
 
-		System.out.println("@@@@@   : " + menu.getRice());
-		System.out.println("@@@@@   : " + menu.getSoup());
-		 
-		
-		return 1;
+			Map<String, Object> param = new HashMap<String, Object>();
+			int resultCount = 0;
+			
+			Menu menu_L = new Menu();
+			menu_L.setCafe_Id(list.get("CAFEID").toString());
+			menu_L.setMenu_Date(list.get("MENUDATE").toString());
+			menu_L.setRice(list.get("LRICE").toString());
+			menu_L.setSoup(list.get("LSOUP").toString());
+			menu_L.setSide_Dish1(list.get("LSIDE1").toString());
+			menu_L.setSide_Dish2(list.get("LSIDE2").toString());
+			menu_L.setSide_Dish3(list.get("LSIDE3").toString());
+			menu_L.setSide_Dish4(list.get("LSIDE4").toString());
+			menu_L.setSide_Dish5(list.get("LSIDE5").toString());
+			menu_L.setSide_Dish6(list.get("LSIDE6").toString());
+			menu_L.setSide_Dish7(list.get("LSIDE7").toString());
+			menu_L.setSide_Dish8(list.get("LSIDE8").toString());
+			menu_L.setDessert1(list.get("LDESSERT1").toString());
+			menu_L.setDessert2(list.get("LDESSERT2").toString());
+			menu_L.setMenu_Div("L");
+
+			int countexist = cafeteria_rest_service.getExist(menu_L);
+
+			if(countexist != 0) {
+				resultCount = cafeteria_rest_service.updateMenu(menu_L);
+			}else {
+				resultCount = cafeteria_rest_service.insertMenu(menu_L);
+			}
+	
+			Menu menu_D = new Menu();
+			menu_D.setCafe_Id(list.get("CAFEID").toString());
+			menu_D.setMenu_Date(list.get("MENUDATE").toString());
+			menu_D.setRice(list.get("DRICE").toString());
+			menu_D.setSoup(list.get("DSOUP").toString());
+			menu_D.setSide_Dish1(list.get("DSIDE1").toString());
+			menu_D.setSide_Dish2(list.get("DSIDE2").toString());
+			menu_D.setSide_Dish3(list.get("DSIDE3").toString());
+			menu_D.setSide_Dish4(list.get("DSIDE4").toString());
+			menu_D.setSide_Dish5(list.get("DSIDE5").toString());
+			menu_D.setSide_Dish6(list.get("DSIDE6").toString());
+			menu_D.setSide_Dish7(list.get("DSIDE7").toString());
+			menu_D.setSide_Dish8(list.get("DSIDE8").toString());
+			menu_D.setDessert1(list.get("DDESSERT1").toString());
+			menu_D.setDessert2(list.get("DDESSERT2").toString());
+			menu_D.setMenu_Div("D");
+
+			countexist = cafeteria_rest_service.getExist(menu_D);
+			
+			if(countexist != 0) {
+				resultCount = resultCount + cafeteria_rest_service.updateMenu(menu_D);
+			}else {
+				resultCount = resultCount + cafeteria_rest_service.insertMenu(menu_D);
+			}
+			
+		return resultCount;
 	}
 	
 

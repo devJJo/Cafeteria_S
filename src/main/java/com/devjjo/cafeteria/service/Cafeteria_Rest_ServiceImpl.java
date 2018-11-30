@@ -149,5 +149,23 @@ public class Cafeteria_Rest_ServiceImpl implements Cafeteria_Rest_Service {
 		// TODO Auto-generated method stub
 		return cafeteria_rest_dao.getCafeInfo(param);
 	}
+
+	@Override
+	public int insertMenu(Menu menu) {
+		// TODO Auto-generated method stub
+		return cafeteria_rest_dao.insertMenu(menu);
+	}
+
+	@Override
+	public int getExist(Menu menu) {
+		// TODO Auto-generated method stub
+		return cafeteria_rest_dao.getExist(menu);
+	}
+
+	@Override
+	public int updateMenu(Menu menu) {
+		// TODO Auto-generated method stub
+		return cafeteria_rest_dao.updateMenu(menu);
+	}
 }
 

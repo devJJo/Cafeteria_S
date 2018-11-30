@@ -47,5 +47,11 @@ public interface Cafeteria_Rest_Dao {
 
 	public Cafe getCafeInfo(Map<String, Object> param);
 
+	public int insertMenu(Menu menu);
+
+	public int getExist(Menu menu);
+
+	public int updateMenu(Menu menu);
+
 }
 

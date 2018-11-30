@@ -45,6 +45,12 @@ public interface Cafeteria_Rest_Service {
 	public Menu getMenu(Map<String, Object> param);
 
 	public Cafe getCafeInfo(Map<String, Object> param);
+
+	public int insertMenu(Menu menu);
+
+	public int getExist(Menu menu);
+
+	public int updateMenu(Menu menu);
 	
 }
 

@@ -109,5 +109,67 @@
 		WHERE CAFE_ID = #{P_CAFE_ID}
 	</select>
 
+	<insert id="insertMenu" parameterType="com.devjjo.cafeteria.model.Menu">
+				INSERT INTO PUBLIC.MENU(
+						CAFE_ID
+						, MENU_DATE
+						, MENU_DIV
+						, RICE
+						, SOUP
+						, SIDE_DISH1
+						, SIDE_DISH2
+						, SIDE_DISH3
+						, SIDE_DISH4
+						, SIDE_DISH5
+						, SIDE_DISH6
+						, SIDE_DISH7
+						, SIDE_DISH8
+						, DESSERT1
+						, DESSERT2
+						, INS_USER_DTM )
+				VALUES (
+						#{cafe_Id}
+						, #{menu_Date}
+						, #{menu_Div}
+						, #{rice}
+						, #{soup}
+						, #{side_Dish1}
+						, #{side_Dish2}
+						, #{side_Dish3}
+						, #{side_Dish4}
+						, #{side_Dish5}
+						, #{side_Dish6}
+						, #{side_Dish7}
+						, #{side_Dish8}
+						, #{dessert1}
+						, #{dessert2}
+						, LOCALTIMESTAMP )
 
+	</insert>
+
+	<select id="getExist" parameterType="com.devjjo.cafeteria.model.Menu" resultType="java.lang.Integer">
+		SELECT COUNT(CAFE_ID)
+		FROM PUBLIC.MENU
+		WHERE CAFE_ID = #{cafe_Id} AND MENU_DATE = #{menu_Date} AND MENU_DIV = #{menu_Div}
+	</select>
+	
+	
+	<update id="updateMenu" parameterType="com.devjjo.cafeteria.model.Menu">
+		UPDATE PUBLIC.MENU SET
+			RICE = #{rice}
+			, SOUP = #{soup}
+			, SIDE_DISH1 = #{side_Dish1}
+			, SIDE_DISH2 = #{side_Dish2}
+			, SIDE_DISH3 = #{side_Dish3}
+			, SIDE_DISH4 = #{side_Dish4}	
+			, SIDE_DISH5 = #{side_Dish5}
+			, SIDE_DISH6 = #{side_Dish6}
+			, SIDE_DISH7 = #{side_Dish7}
+			, SIDE_DISH8 = #{side_Dish8}
+			, DESSERT1 = #{dessert1}
+			, DESSERT2 = #{dessert2}
+			, UPD_USER_DTM = LOCALTIMESTAMP
+		WHERE CAFE_ID = #{cafe_Id} AND MENU_DATE = #{menu_Date} AND MENU_DIV = #{menu_Div}
+	</update>
+	
 </mapper> 
