@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -177,7 +178,21 @@ public class Cafeteria_Rest_Controller {
 	@RequestMapping(value = RestURIConstants.POST_USER, method = RequestMethod.POST)
 	public @ResponseBody int insertUser(@RequestBody User user) {
 		logger.info("##### Create User");
-		int resultCount = cafeteria_rest_service.insertUser(user);
+		int resultCount = 0;
+		String userId = "";
+		userId = user.getUser_Id(); 
+		
+		Map<String, Object> param = new HashMap<String, Object>();
+		User searchuser = new User();
+		param.put("P_USER_ID", userId);
+		searchuser = cafeteria_rest_service.selectUserOne(param);
+		
+		if(ObjectUtils.isEmpty(searchuser)) {
+			resultCount = cafeteria_rest_service.insertUser(user);
+		}else {
+			resultCount = 0;
+		}
+	
 		return resultCount;
 	}
 	
@@ -217,11 +232,28 @@ public class Cafeteria_Rest_Controller {
 	 * 등록된 모든 카페정보 + 당일 점심/저녁
 	 */
 	@RequestMapping(value = RestURIConstants.GET_ALL_CAFE, method = RequestMethod.GET)
-	public @ResponseBody List<Cafe> get_all_cafe(@PathVariable("today") String today) {
+	public @ResponseBody List<Cafe> get_all_cafe(@PathVariable("today") String today
+												, @PathVariable("sorttype") String sorttype
+												, @PathVariable("lat") String lat
+												, @PathVariable("lon") String lon
+												, @PathVariable("count") String count) {
 		logger.info("##### Get All Cafe");
 		Map<String, Object> param = new HashMap<String, Object>();
 		param.put("P_TODAY", today);
+		param.put("P_SORT_TYPE", sorttype);
+		param.put("P_LAT", lat);
+		param.put("P_LON", lon);
+		param.put("P_COUNT", count);
+		System.out.println(today);
+		System.out.println(sorttype);
+		System.out.println(lat);
+		System.out.println(lon);
+		System.out.println(count);
+		
 		List<Cafe> cafes = cafeteria_rest_service.selectcafes(param);
+		
+		System.out.println("@@@@@@");
+		System.out.println(cafes.toString());
 
 		return cafes;
 	}
@@ -375,6 +407,7 @@ public class Cafeteria_Rest_Controller {
 
 		return cafeteria_rest_service.selectAllNotice();
 	}
+
 	
 }
 

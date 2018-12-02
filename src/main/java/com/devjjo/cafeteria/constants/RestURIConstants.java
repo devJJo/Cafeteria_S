@@ -14,7 +14,7 @@ public class RestURIConstants {
 	public static final String POST_USER 			= "/user/insert";			
 	public static final String DELETE_USER 			= "/user/delete/{user_id}";
 	
-	public static final String GET_ALL_CAFE 		= "/allcafes/{today}";		
+	public static final String GET_ALL_CAFE 		= "/allcafes/{today}/{sorttype}/{lat}/{lon}/{count}";		
 	public static final String GET_CAFE_MENU 		= "/cafemenu/{cafe_id}/{st_date}/{end_date}";
 	
 	public static final String GET_ALL_COMMENT		= "/allcomments/{cafe_id}";

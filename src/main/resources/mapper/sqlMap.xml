@@ -22,8 +22,66 @@
 	</delete>
 
 	<select id="selectcafes" resultType="com.devjjo.cafeteria.model.Cafe">
-		SELECT * 
-		FROM PUBLIC.CAFE 
+
+		SELECT *
+		
+		FROM(
+			SELECT 
+				CAFE_ID,
+				CAFE_NM,
+				CAFE_IMG_NM,
+				CAFE_IMG_DIR,
+				PRICE,
+				LUNCH_YN,
+				DINNER_YN,
+				OPER_TIME,
+				BUILD_ADDR,
+				BUILD_NM,
+				BUILD_TEL,
+				BUILD_HOME,
+				BUILD_KEY,
+				BUILD_X,
+				BUILD_Y,
+				COALESCE(BUILD_SCORE,0) AS BUILD_SCORE,
+				ROUND(CAST(DISTANCE AS NUMERIC),0) AS DISTANCE,
+				USE_YN,
+				INS_USER_DTM,
+				UPD_USER_DTM
+			FROM(															 
+				SELECT 
+					CAFE_ID,
+					CAFE_NM,
+					CAFE_IMG_NM,
+					CAFE_IMG_DIR,
+					PRICE,
+					LUNCH_YN,
+					DINNER_YN,
+					OPER_TIME,
+					BUILD_ADDR,
+					BUILD_NM,
+					BUILD_TEL,
+					BUILD_HOME,
+					BUILD_KEY,
+					BUILD_X,
+					BUILD_Y,
+					(SELECT ROUND(AVG( COMMENT_SCORE),1) FROM PUBLIC.CAFE_COMMENT WHERE CAFE_ID=CAFE.CAFE_ID GROUP BY CAFE_ID) AS BUILD_SCORE,
+					(select earth_distance(ll_to_earth(#{P_LAT},#{P_LON}), ll_to_earth(CAFE.BUILD_X,CAFE.BUILD_Y))) AS DISTANCE,
+					USE_YN,
+					INS_USER_DTM,
+					UPD_USER_DTM
+				FROM PUBLIC.CAFE AS CAFE
+			) CAFE	
+		) CAFE
+		
+		<if test="P_SORT_TYPE != null">
+			<if test='P_SORT_TYPE == "1"'>
+			    ORDER BY DISTANCE ASC
+			</if>
+			<if test='P_SORT_TYPE == "2"'>
+			    ORDER BY BUILD_SCORE DESC
+			</if>
+		</if>
+  	 
 	</select>
 	
 	<select id="selectmenus" resultType="com.devjjo.cafeteria.model.Menu">
