@@ -21,10 +21,27 @@
 		WHERE USER_ID = #{P_USER_ID}
 	</delete>
 
-	<select id="selectcafes" resultType="com.devjjo.cafeteria.model.Cafe">
+	<select id="selectcafes"  parameterType="java.util.HashMap" resultType="com.devjjo.cafeteria.model.Cafe">
 
-		SELECT *
-		
+		SELECT 
+			CAFE_ID,
+			CAFE_NM,
+			CAFE_IMG_NM,
+			CAFE_IMG_DIR,
+			PRICE,
+			LUNCH_YN,
+			DINNER_YN,
+			OPER_TIME,
+			BUILD_ADDR,
+			BUILD_NM,
+			BUILD_TEL,
+			BUILD_HOME,
+			BUILD_KEY,
+			BUILD_X,
+			BUILD_Y,
+			BUILD_SCORE,
+			DISTANCE,
+			USE_YN
 		FROM(
 			SELECT 
 				CAFE_ID,
@@ -65,7 +82,7 @@
 					BUILD_X,
 					BUILD_Y,
 					(SELECT ROUND(AVG( COMMENT_SCORE),1) FROM PUBLIC.CAFE_COMMENT WHERE CAFE_ID=CAFE.CAFE_ID GROUP BY CAFE_ID) AS BUILD_SCORE,
-					(select earth_distance(ll_to_earth(#{P_LAT},#{P_LON}), ll_to_earth(CAFE.BUILD_X,CAFE.BUILD_Y))) AS DISTANCE,
+					(select earth_distance(ll_to_earth(${P_LAT},${P_LON}), ll_to_earth(CAFE.BUILD_X,CAFE.BUILD_Y))) AS DISTANCE,
 					USE_YN,
 					INS_USER_DTM,
 					UPD_USER_DTM

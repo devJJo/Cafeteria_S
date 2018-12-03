@@ -50,9 +50,9 @@ public class Cafeteria_Rest_DaoImpl implements Cafeteria_Rest_Dao{
 	}
 
 	@Override
-	public List<Cafe> selectcafes() {
+	public List<Cafe> selectcafes(Map<String, Object> param) {
 		// TODO Auto-generated method stub
-		return session.selectList("CafeteriaSqlMap.selectcafes");
+		return session.selectList("CafeteriaSqlMap.selectcafes", param);
 	}
 
 	@Override

@@ -17,7 +17,7 @@ public interface Cafeteria_Rest_Dao {
 
 	public int deleteUser(Map<String, Object> userId);
 
-	public List<Cafe> selectcafes();
+	public List<Cafe> selectcafes(Map<String, Object> param);
 
 	public List<Menu> selectmenus(Map<String, Object> param);
 

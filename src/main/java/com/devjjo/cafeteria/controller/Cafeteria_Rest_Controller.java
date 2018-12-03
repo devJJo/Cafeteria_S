@@ -244,16 +244,8 @@ public class Cafeteria_Rest_Controller {
 		param.put("P_LAT", lat);
 		param.put("P_LON", lon);
 		param.put("P_COUNT", count);
-		System.out.println(today);
-		System.out.println(sorttype);
-		System.out.println(lat);
-		System.out.println(lon);
-		System.out.println(count);
 		
 		List<Cafe> cafes = cafeteria_rest_service.selectcafes(param);
-		
-		System.out.println("@@@@@@");
-		System.out.println(cafes.toString());
 
 		return cafes;
 	}

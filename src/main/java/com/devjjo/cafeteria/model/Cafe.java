@@ -157,6 +157,4 @@ public class Cafe {
 				+ distance + ", menu_L=" + menu_L + ", menu_D=" + menu_D + "]";
 	}
 
-	
-	
 }
