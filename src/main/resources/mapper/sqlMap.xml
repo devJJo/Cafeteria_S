@@ -98,6 +98,7 @@
 			    ORDER BY BUILD_SCORE DESC
 			</if>
 		</if>
+  	 	LIMIT 10 OFFSET (${P_COUNT} - 1) * 10
   	 
 	</select>
 	
@@ -111,6 +112,7 @@
 		SELECT * 
 		FROM PUBLIC.MENU
 		WHERE CAFE_ID = #{P_CAFE_ID} AND MENU_DATE BETWEEN #{P_ST_DATE} AND #{P_END_DATE}
+		ORDER BY MENU_DATE ASC, MENU_DIV DESC
 	</select>
 
 	<insert id="insertComment" parameterType="com.devjjo.cafeteria.model.Cafe_Comment">
@@ -122,19 +124,20 @@
 		SELECT * 
 		FROM PUBLIC.CAFE_COMMENT
 		WHERE CAFE_ID = #{P_CAFE_ID}
+		ORDER BY SEQ DESC
 	</select>
 
 	<update id="updateComment" parameterType="java.util.HashMap">
 		UPDATE PUBLIC.CAFE_COMMENT
 		SET COMMENT =#{P_COMMENT}, COMMENT_SCORE = TO_NUMBER(#{P_SCORE}, '9.9'), UPD_USER_DTM = LOCALTIMESTAMP
-		WHERE CAFE_ID = #{P_CAFE_ID} AND USER_ID = #{P_USER_ID} AND SEQ = TO_NUMBER(#{P_SEQ}, '999999')
+		WHERE CAFE_ID = #{P_CAFE_ID} AND USER_ID = #{P_USER_ID} AND SEQ = ${P_SEQ}
 
 	</update>
 
 	<delete id="deleteComment" parameterType="java.util.HashMap">
 		DELETE 
 		FROM PUBLIC.CAFE_COMMENT
-		WHERE CAFE_ID = #{P_CAFE_ID} AND USER_ID = #{P_USER_ID} AND SEQ = TO_NUMBER(#{P_SEQ}, '999999')
+		WHERE CAFE_ID = #{P_CAFE_ID} AND USER_ID = #{P_USER_ID} AND SEQ = ${P_SEQ}
 	</delete>
 	
 	
@@ -142,12 +145,14 @@
 		SELECT * 
 		FROM PUBLIC.CAFE_COMMENT
 		WHERE USER_ID = #{P_USER_ID}
+		ORDER BY SEQ DESC
 	</select>
 
 	<select id="selectAllFavorite" parameterType="java.util.HashMap" resultType="com.devjjo.cafeteria.model.Favorite">
 		SELECT * 
 		FROM PUBLIC.FAVORITE
 		WHERE USER_ID = #{P_USER_ID}
+		ORDER BY ADD_DATE DESC
 	</select>
 	
 	<delete id="deleteFavorite" parameterType="java.util.HashMap">
@@ -182,6 +187,7 @@
 		SELECT * 
 		FROM PUBLIC.CAFE
 		WHERE CAFE_ID = #{P_CAFE_ID}
+		ORDER BY CAFE_ID
 	</select>
 
 	<insert id="insertMenu" parameterType="com.devjjo.cafeteria.model.Menu">

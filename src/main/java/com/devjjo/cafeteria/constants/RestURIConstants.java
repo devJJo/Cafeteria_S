@@ -19,7 +19,7 @@ public class RestURIConstants {
 	
 	public static final String GET_ALL_COMMENT		= "/allcomments/{cafe_id}";
 	public static final String POST_COMMENT 		= "/comment/insert";
-	public static final String PUT_COMMENT 			= "/comment/update/{cafe_id}/{user_id}/{seq}/{score}/{comment}"; //수정예정...
+	public static final String PUT_COMMENT 			= "/comment/update/{cafe_id}/{user_id}/{seq}/{score}/{comment}"; 
 	public static final String DELETE_COMMENT 		= "/comment/delete/{cafe_id}/{user_id}/{seq}";
 	public static final String GET_USER_COMMENT 	= "/user/comment/{user_id}";
 

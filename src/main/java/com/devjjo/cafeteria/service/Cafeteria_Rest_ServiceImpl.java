@@ -51,7 +51,7 @@ public class Cafeteria_Rest_ServiceImpl implements Cafeteria_Rest_Service {
 		// TODO Auto-generated method stub
 		List<Cafe> lists = new ArrayList<Cafe>();
 		lists = cafeteria_rest_dao.selectcafes(param);
-		
+
 		List<Menu> menu = new ArrayList<Menu>();
 		menu = cafeteria_rest_dao.selectmenus(param);
 
