@@ -2,19 +2,24 @@
 Cafeteria App 서버부분 사용 언어 및 기술
 
 
-**서버**  
+**-서버**  
 AWS - ec2 (unbuntu 18.04)  
 Tomcat8  
-Apache     
-**Language**  
+Apache    
+  
+**-Language**  
 Java  
 Jsp/Javascript/jQuery    
-**DB**  
+  
+**-DB**  
 PostgreSQL 10.6    
-**Framework**  
+  
+**-Framework**  
 Spring Framework 4.3    
-**IDE**  
+  
+**-IDE**  
 STS    
-**ETC**  
+  
+**-ETC**  
 Mybatis  
 Restful Api    
