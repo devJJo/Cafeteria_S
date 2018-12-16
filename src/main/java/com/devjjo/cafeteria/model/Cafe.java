@@ -1,10 +1,8 @@
 package com.devjjo.cafeteria.model;
 
-import java.util.List;
-
 public class Cafe {
 	
-
+	private String end_page;
 	private String cafe_Id;
 	private String cafe_Nm;
 	private String cafe_img_Nm;
@@ -27,6 +25,13 @@ public class Cafe {
 	private Menu menu_L;
 	private Menu menu_D;
 
+	
+	public String getEnd_page() {
+		return end_page;
+	}
+	public void setEnd_page(String end_page) {
+		this.end_page = end_page;
+	}
 	public String getCafe_Id() {
 		return cafe_Id;
 	}
@@ -149,12 +154,14 @@ public class Cafe {
 	}
 	@Override
 	public String toString() {
-		return "Cafe [cafe_Id=" + cafe_Id + ", cafe_Nm=" + cafe_Nm + ", cafe_img_Nm=" + cafe_img_Nm + ", cafe_img_Dir="
-				+ cafe_img_Dir + ", price=" + price + ", lunch_YN=" + lunch_YN + ", dinner_YN=" + dinner_YN
-				+ ", oper_Time=" + oper_Time + ", build_Addr=" + build_Addr + ", build_Nm=" + build_Nm + ", build_Tel="
-				+ build_Tel + ", build_Home=" + build_Home + ", build_Key=" + build_Key + ", build_X=" + build_X
-				+ ", build_Y=" + build_Y + ", build_Score=" + build_Score + ", use_YN=" + use_YN + ", distance="
-				+ distance + ", menu_L=" + menu_L + ", menu_D=" + menu_D + "]";
+		return "Cafe [end_page=" + end_page + ", cafe_Id=" + cafe_Id + ", cafe_Nm=" + cafe_Nm + ", cafe_img_Nm="
+				+ cafe_img_Nm + ", cafe_img_Dir=" + cafe_img_Dir + ", price=" + price + ", lunch_YN=" + lunch_YN
+				+ ", dinner_YN=" + dinner_YN + ", oper_Time=" + oper_Time + ", build_Addr=" + build_Addr + ", build_Nm="
+				+ build_Nm + ", build_Tel=" + build_Tel + ", build_Home=" + build_Home + ", build_Key=" + build_Key
+				+ ", build_X=" + build_X + ", build_Y=" + build_Y + ", build_Score=" + build_Score + ", use_YN="
+				+ use_YN + ", distance=" + distance + ", menu_L=" + menu_L + ", menu_D=" + menu_D + "]";
 	}
+
+	
 
 }

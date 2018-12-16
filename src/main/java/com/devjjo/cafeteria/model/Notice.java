@@ -5,6 +5,8 @@ public class Notice {
 	private String seq;
 	private String notice_Title;
 	private String notice_Contents;
+	private String ins_user_dtm;
+	
 	public String getSeq() {
 		return seq;
 	}
@@ -23,10 +25,18 @@ public class Notice {
 	public void setNotice_Contents(String notice_Contents) {
 		this.notice_Contents = notice_Contents;
 	}
+	public String getIns_user_dtm() {
+		return ins_user_dtm;
+	}
+	public void setIns_user_dtm(String ins_user_dtm) {
+		this.ins_user_dtm = ins_user_dtm;
+	}
 	@Override
 	public String toString() {
-		return "Notice [seq=" + seq + ", notice_Title=" + notice_Title + ", notice_Contents=" + notice_Contents + "]";
+		return "Notice [seq=" + seq + ", notice_Title=" + notice_Title + ", notice_Contents=" + notice_Contents
+				+ ", ins_user_dtm=" + ins_user_dtm + "]";
 	}
+
 	
 	
 	

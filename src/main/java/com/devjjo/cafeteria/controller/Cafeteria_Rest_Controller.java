@@ -223,6 +223,10 @@ public class Cafeteria_Rest_Controller {
 		Map<String, Object> param = new HashMap<String, Object>();
 		param.put("P_USER_ID", userId);
 		int resultCount = cafeteria_rest_service.deleteUser(param);
+		resultCount = cafeteria_rest_service.deleteALLFavorite(param);
+		resultCount = cafeteria_rest_service.deleteALLComment(param);
+		
+		
 		return resultCount;
 	}
 	

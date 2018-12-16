@@ -167,5 +167,17 @@ public class Cafeteria_Rest_ServiceImpl implements Cafeteria_Rest_Service {
 		// TODO Auto-generated method stub
 		return cafeteria_rest_dao.updateMenu(menu);
 	}
+
+	@Override
+	public int deleteALLFavorite(Map<String, Object> param) {
+		// TODO Auto-generated method stub
+		return cafeteria_rest_dao.deleteALLFavorite(param);
+	}
+
+	@Override
+	public int deleteALLComment(Map<String, Object> param) {
+		// TODO Auto-generated method stub
+		return cafeteria_rest_dao.deleteALLComment(param);
+	}
 }
 

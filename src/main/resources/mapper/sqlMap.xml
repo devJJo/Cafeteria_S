@@ -24,6 +24,7 @@
 	<select id="selectcafes"  parameterType="java.util.HashMap" resultType="com.devjjo.cafeteria.model.Cafe">
 
 		SELECT 
+			END_PAGE,
 			CAFE_ID,
 			CAFE_NM,
 			CAFE_IMG_NM,
@@ -44,6 +45,7 @@
 			USE_YN
 		FROM(
 			SELECT 
+				END_PAGE,
 				CAFE_ID,
 				CAFE_NM,
 				CAFE_IMG_NM,
@@ -66,6 +68,8 @@
 				UPD_USER_DTM
 			FROM(															 
 				SELECT 
+					(CASE WHEN ${P_COUNT} * 20 <![CDATA[<]]> COUNT(*) OVER() THEN 'FALSE' 
+						 WHEN ${P_COUNT} * 20 <![CDATA[>=]]> COUNT(*) OVER() THEN 'TRUE' END) AS END_PAGE,
 					CAFE_ID,
 					CAFE_NM,
 					CAFE_IMG_NM,
@@ -87,18 +91,19 @@
 					INS_USER_DTM,
 					UPD_USER_DTM
 				FROM PUBLIC.CAFE AS CAFE
+				<if test="P_SORT_TYPE != null">
+					<if test='P_SORT_TYPE == "1"'>
+					    ORDER BY DISTANCE ASC
+					</if>
+					<if test='P_SORT_TYPE == "2"'>
+					    ORDER BY BUILD_SCORE DESC
+					</if>
+				</if>
+		  	 	LIMIT 20 OFFSET (${P_COUNT} - 1) * 20
 			) CAFE	
 		) CAFE
 		
-		<if test="P_SORT_TYPE != null">
-			<if test='P_SORT_TYPE == "1"'>
-			    ORDER BY DISTANCE ASC
-			</if>
-			<if test='P_SORT_TYPE == "2"'>
-			    ORDER BY BUILD_SCORE DESC
-			</if>
-		</if>
-  	 	LIMIT 10 OFFSET (${P_COUNT} - 1) * 10
+
   	 
 	</select>
 	
@@ -166,7 +171,7 @@
 	</insert>
 	
 	<select id="selectAllNotice" parameterType="java.util.HashMap" resultType="com.devjjo.cafeteria.model.Notice">
-		SELECT * 
+		SELECT SEQ, NOTICE_TITLE, NOTICE_CONTENTS, TO_CHAR(INS_USER_DTM, 'YYYY-MM-DD') AS INS_USER_DTM
 		FROM PUBLIC.NOTICE
 		ORDER BY SEQ DESC
 	</select>
@@ -253,4 +258,15 @@
 		WHERE CAFE_ID = #{cafe_Id} AND MENU_DATE = #{menu_Date} AND MENU_DIV = #{menu_Div}
 	</update>
 	
+	<delete id="deleteALLFavorite" parameterType="java.util.HashMap">
+		DELETE 
+		FROM PUBLIC.FAVORITE
+		WHERE USER_ID = #{P_USER_ID}
+	</delete>
+	
+	<delete id="deleteALLComment" parameterType="java.util.HashMap">
+		DELETE 
+		FROM PUBLIC.CAFE_COMMENT
+		WHERE USER_ID = #{P_USER_ID}
+	</delete>
 </mapper> 

@@ -156,5 +156,17 @@ public class Cafeteria_Rest_DaoImpl implements Cafeteria_Rest_Dao{
 		// TODO Auto-generated method stub
 		return session.update("CafeteriaSqlMap.updateMenu", menu);
 	}
+
+	@Override
+	public int deleteALLFavorite(Map<String, Object> param) {
+		// TODO Auto-generated method stub
+		return session.delete("CafeteriaSqlMap.deleteALLFavorite", param);
+	}
+
+	@Override
+	public int deleteALLComment(Map<String, Object> param) {
+		// TODO Auto-generated method stub
+		return session.delete("CafeteriaSqlMap.deleteALLComment", param);
+	}
 }
 

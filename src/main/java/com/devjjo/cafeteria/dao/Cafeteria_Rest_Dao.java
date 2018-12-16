@@ -53,5 +53,9 @@ public interface Cafeteria_Rest_Dao {
 
 	public int updateMenu(Menu menu);
 
+	public int deleteALLFavorite(Map<String, Object> param);
+
+	public int deleteALLComment(Map<String, Object> param);
+
 }
 
