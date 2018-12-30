@@ -1,30 +1,29 @@
 # Cafeteria_S 
-Cafeteria App 서버부분 사용 언어 및 기술  
 
-  
-특정 지역(현재 구로디지털단지)근처의 구내식당 정보를  
-제공해주는 API를 제공하고 관리자 페이지로 식당 리스트 및 메뉴를  
-입력할 수 있는 화면을 위한 프로젝트
+**-프로젝트명** 
+ - 구내식당
+**-프로젝트설명** 
+ - 특정 지역 구내식당 리스트와 메뉴를 확인할 수 있는 Application
+**-프로젝트 진행일** 
+ - 2018.09 ~ 2019.01
+**-프로젝트 유형** 
+ - 아이디어를 구체화하여 개인의 역량강화를 위한 프로젝트
+**-주사용 기술** 
+ - Spring Framework
+ - Java
+ - RestFul API
+ - Mybatis
+ - Postgresql
+ - AWS(EC2)-WebServer/WAS
+ - Git
+**-담당 업무**
+ - 아이디어 공유
+ - DB설계
+ - AWS(EC2) 에 Ubuntu설치 후 WebServer와 WAS환경설정
+ - PostgreSQL서버 설치 후 Spring Framework연동
+ - RestFul API 개발 (관리자페이지 / Android App에서 사용)
+ - 메뉴입력관련 관리자웹페이지 개발(jQuery 사용)
+ - 페이징처리
+ - PostgreSQL 추가 라이브러리 cube와 earthdistance 사용 거리순정렬
 
 
-**-서버**  
-AWS - ec2 (unbuntu 18.04)  
-Tomcat8  
-Apache    
-  
-**-Language**  
-Java  
-Jsp/Javascript/jQuery    
-  
-**-DB**  
-PostgreSQL 10.6    
-  
-**-Framework**  
-Spring Framework 4.3    
-  
-**-IDE**  
-STS    
-  
-**-ETC**  
-Mybatis  
-Restful Api    
